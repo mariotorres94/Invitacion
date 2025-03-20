@@ -1,0 +1,38 @@
+import { FC } from "react"
+import { GiftSeparate } from "../../assets/images"
+import { Button } from "../Button/Button.component";
+import { GiftIcon } from "../../assets/gifts";
+import { EModal } from "../../assets/shared/enums/modal.enum";
+
+interface GiftProps {
+    title: string;
+    subTitle: string;
+    showModal: (modal: string, data?: unknown) => void;
+}
+
+export const Gift: FC<GiftProps> = ({title,subTitle,showModal}) => {
+    const handleShowModal = () => {
+        if (showModal) {
+            showModal(EModal.GIFT);
+        }
+    };
+    return (
+        <div className="text-center sm:mt-3">
+            <div className="w-[70%] sm:w-[50%] m-auto mb-6">
+                <img src={GiftSeparate} alt="" />
+            </div>
+            <div className="flex flex-col gap-4 items-center px-4 mx-5 md:mt-10">
+                <h2 className="font-styleScript text-3xl sm:text-4xl md:text-5xl text-[#456EA1]">{title}</h2>
+                <p className="font-cormorant-upright text-lg md:text-xl text-[#809FC3]">{subTitle}</p>
+            </div>
+            <div className="flex flex-col gap-4 justify-center items-center mx-24">
+                <div className="pt-4 mx-auto">
+                    <img src={GiftIcon} alt="" width={60} height={60}/>
+                </div>
+                <div className="w-36 h-10 flex justify-center items-center">
+                    <Button text="Ver más" color="#193C69" onclick={handleShowModal}/>
+                </div>
+            </div>
+        </div>
+    )
+}
