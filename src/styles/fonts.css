@@ -1,0 +1,161 @@
+@font-face {
+    font-family: 'Tangerine';
+    src: url('../assets/fonts/Tangerine-Regular.woff2') format('woff2'),
+        url('../assets/fonts/Tangerine-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tangerine';
+    src: url('../assets/fonts/Tangerine-Bold.woff2') format('woff2'),
+        url('../assets/fonts/Tangerine-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Petit Formal Script';
+    src: url('../assets/fonts/PetitFormalScript-Regular.woff2') format('woff2'),
+        url('../assets/fonts/PetitFormalScript-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../assets/fonts/CormorantGaramond-Regular.woff2') format('woff2'),
+        url('../assets/fonts/CormorantGaramond-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Slab';
+    src: url('../assets/fonts/JosefinSlab-SemiBoldItalic.woff2') format('woff2'),
+        url('../assets/fonts/JosefinSlab-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Slab SemiBold';
+    src: url('../assets/fonts/JosefinSlab-SemiBold.woff2') format('woff2'),
+        url('../assets/fonts/JosefinSlab-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Slab Bold';
+    src: url('../assets/fonts/JosefinSlab-Bold.woff2') format('woff2'),
+        url('../assets/fonts/JosefinSlab-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Style Script';
+    src: url('../assets/fonts/StyleScript-Regular.woff2') format('woff2'),
+        url('../assets/fonts/StyleScript-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-SemiBold.woff2') format('woff2'),
+        url('../assets/fonts/Poppins-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Strait';
+    src: url('../assets/fonts/Strait-Regular.woff2') format('woff2'),
+        url('../assets/fonts/Strait-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Upright';
+    src: url('../assets/fonts/CormorantUpright-Regular.woff2') format('woff2'),
+        url('../assets/fonts/CormorantUpright-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Slab Regular';
+    src: url('../assets/fonts/JosefinSlab-Regular.woff2') format('woff2'),
+        url('../assets/fonts/JosefinSlab-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Sans Regular';
+    src: url('../assets/fonts/JosefinSans-Regular.woff2') format('woff2'),
+        url('../assets/fonts/JosefinSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Josefin Sans Light';
+    src: url('../assets/fonts/JosefinSans-Light.woff2') format('woff2'),
+        url('../assets/fonts/JosefinSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins Light';
+    src: url('../assets/fonts/Poppins-Light.woff2') format('woff2'),
+        url('../assets/fonts/Poppins-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins ExtraLight';
+    src: url('../assets/fonts/Poppins-ExtraLight.woff2') format('woff2'),
+        url('../assets/fonts/Poppins-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins Regular';
+    src: url('../assets/fonts/Poppins-Regular.woff2') format('woff2'),
+        url('../assets/fonts/Poppins-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins ExtraLightItalic';
+    src: url('../assets/fonts/Poppins-ExtraLightItalic.woff2') format('woff2'),
+        url('../assets/fonts/Poppins-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
