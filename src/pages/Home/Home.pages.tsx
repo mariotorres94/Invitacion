@@ -1,17 +1,16 @@
-import { FC, useEffect} from "react";
+import { FC, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "../../components/Button/Button.component";
-import { DataService } from "../../assets/service/data.service";
 import { useNavigate } from "react-router-dom";
-import { useInvitadosStore } from "../../assets/store/invitados.store";
+import useInvitadosStore from "../../assets/store/invitados.store";
 
 type FormData = {
     code: string;
 };
 
-export const Home:FC = () => {
+export const Home: FC = () => {
     const navigate = useNavigate();
-    const { setInvitados, invitados, setInvitadoActual } = useInvitadosStore();
+    const { invitados, loading, error, fetchInvitados, setInvitadoActual } = useInvitadosStore()
     const { control, handleSubmit, formState: { errors }, setError } = useForm<FormData>();
     const onSubmit = (data: FormData) => {
         const codigoIngresado = data.code.trim();
@@ -29,16 +28,12 @@ export const Home:FC = () => {
         }
     };
     useEffect(() => {
-        const fetchInvitados = async () => {
-            try {
-                const data = await DataService.getInvitados();
-                setInvitados(data);
-            } catch (error) {
-                console.error("Error al cargar invitados:", error);
-            }
-        };
-        fetchInvitados();
-    }, [setInvitados]);
+        if (invitados.length === 0) {
+            fetchInvitados()
+        }
+    }, [fetchInvitados, invitados.length])
+    if (loading) return <div>Cargando ...</div>
+    if (error) return <div>Error: {error}</div>
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-4">
@@ -48,12 +43,12 @@ export const Home:FC = () => {
                     defaultValue=""
                     rules={{ required: 'Por favor ingresa tu nombre completo' }}
                     render={({ field }) => (
-                    <input
-                        {...field}
-                        type="text"
-                        placeholder="Ingrese su código de autorización"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                    />
+                        <input
+                            {...field}
+                            type="text"
+                            placeholder="Ingrese su código de autorización"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                        />
                     )}
                 />
                 {errors.code && <p className="text-red-500 text-sm">{errors.code.message}</p>}

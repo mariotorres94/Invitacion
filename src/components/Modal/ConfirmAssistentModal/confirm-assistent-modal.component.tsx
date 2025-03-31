@@ -7,9 +7,8 @@ import { FlowerModal, FlowerSeparate } from '../../../assets/images';
 import useModal from '../../../assets/hooks/modal.hook';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from '../../Button/Button.component';
-import { useLocation } from 'react-router-dom';
-import { Invitado } from '../../../assets/models/invitado.model';
 import { DataService } from '../../../assets/service/data.service';
+import useInvitadosStore from '../../../assets/store/invitados.store';
 
 type FormData = {
     attendance: string;
@@ -24,11 +23,12 @@ type FormData = {
 export const ConfirmAssistentModal: FC = () => {
     const { hideModal } = useModal();
     const { control, handleSubmit, formState: { errors }, watch } = useForm<FormData>();
+    const { invitadoActual } = useInvitadosStore();
     const onSubmit = async (data: FormData) => {
         try {
             const submissionData = {
                 ...data,
-                familyCode: invitado.ID,
+                familyCode: invitadoActual?.ID,
             }
             const response = await DataService.sendConfirmaciones(submissionData);
             if (response && response.success) {
@@ -40,8 +40,6 @@ export const ConfirmAssistentModal: FC = () => {
             console.error('Error en onSubmit:', error);
         }
     };
-    const location = useLocation();
-    const { invitado } = location.state as { invitado: Invitado };
     const attendance = watch('attendance');
     return (
         <Modal modalId={EModal.CONFIRMASSISTENT} className='w-[85%] md:w-[45%]'>
@@ -94,7 +92,7 @@ export const ConfirmAssistentModal: FC = () => {
                         {
                             attendance === 'si' && (
                                 <>
-                                    <p className='font-josefin-sans-light'>Tienes {invitado.Pases} pase</p>
+                                    <p className='font-josefin-sans-light'>Tienes {invitadoActual?.Pases} pase</p>
                                     <div className="mt-4">
                                         <Controller
                                             name="fullName"
@@ -140,9 +138,9 @@ export const ConfirmAssistentModal: FC = () => {
                                         <img src={FlowerSeparate} alt="Flower" />
                                     </div>
                                     {
-                                        invitado.Pases > 1 && (
+                                        invitadoActual && invitadoActual.Pases > 1 && (
                                             <div className='space-y-4'>
-                                                {[...Array(invitado.Pases - 1)].map((_, index) => (
+                                                {[...Array(invitadoActual && invitadoActual.Pases - 1)].map((_, index) => (
                                                     <div key={index}>
                                                         <Controller
                                                             name={`guest.${index}.nombre`}

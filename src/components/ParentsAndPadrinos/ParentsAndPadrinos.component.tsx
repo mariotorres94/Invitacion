@@ -13,7 +13,16 @@ interface ParentsAndPadrinosProps {
     endElement?: string;
 }
 
-export const ParentsAndPadrinos:FC<ParentsAndPadrinosProps> = ({ title, titleParentsNovia, parentsNovia, titleParentsNovio, parentsNovio, imgElement }) => {
+export const ParentsAndPadrinos:FC<ParentsAndPadrinosProps> = ({
+    title,
+    titleParentsNovia,
+    parentsNovia,
+    titleParentsNovio,
+    parentsNovio,
+    imgElement,
+    titlePadrinos,
+    padrinos
+}) => {
     return (
         <Card
             image={imgElement}
@@ -36,6 +45,14 @@ export const ParentsAndPadrinos:FC<ParentsAndPadrinosProps> = ({ title, titlePar
                         <h3 className="text-xl font-cormorant-upright font-semibold md:text-2xl">{titleParentsNovio}</h3>
                         <div className="flex flex-col leading-8 gap-2 font-josefin-slab-regular">
                             {parentsNovio.map((parent, index) => (
+                                <p className="md:text-xl" key={index}>{parent}</p>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-xl font-cormorant-upright font-semibold md:text-2xl">{titlePadrinos}</h3>
+                        <div className="flex flex-col leading-8 gap-2 font-josefin-slab-regular">
+                            {padrinos.map((parent, index) => (
                                 <p className="md:text-xl" key={index}>{parent}</p>
                             ))}
                         </div>

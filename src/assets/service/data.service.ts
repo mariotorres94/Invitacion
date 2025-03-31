@@ -7,7 +7,7 @@ export interface ConfirmacionData {
     guest?: {
         nombre: string;
     }[];
-    familyCode: string | number;
+    familyCode: string | number | undefined;
 }
 
 // export const API_URL = 'https://script.google.com/macros/s/AKfycbyEjOAEitVrj91hv3wbvwRsZAch_57TSCsMCjX6zVXNtEBqyFXf2Ozg1Br_yaY_oLc/exec';

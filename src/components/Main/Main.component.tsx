@@ -32,7 +32,7 @@ export const Main:FC = () => {
                 titleParentsNovio="Padres del Novio"
                 parentsNovio={["Yanina Torres Chumpitaz", "David Enrique Torres Castilla"]}
                 titlePadrinos="Acompañados de nuestros padrinos"
-                padrinos={["Lourdes Torres Castilla", "David Enrique Torres Castilla"]}
+                padrinos={["Margarita Chumpitaz Luyo", "Mario Torres Saravia"]}
                 imgElement={FlowerParent}
                 endElement={EndGuest}
             />
