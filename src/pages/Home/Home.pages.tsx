@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "../../components/Button/Button.component";
 import { useNavigate } from "react-router-dom";
-import useInvitadosStore from "../../assets/store/invitados.store";
+import { useHydratedInvitadosStore } from "../../assets/store/invitados.store";
 
 type FormData = {
     code: string;
@@ -10,7 +10,8 @@ type FormData = {
 
 export const Home: FC = () => {
     const navigate = useNavigate();
-    const { invitados, loading, error, fetchInvitados, setInvitadoActual } = useInvitadosStore()
+    const store = useHydratedInvitadosStore();
+    const { invitados, loading, error, fetchInvitados, setInvitadoActual } = store;
     const { control, handleSubmit, formState: { errors }, setError } = useForm<FormData>();
     const onSubmit = (data: FormData) => {
         const codigoIngresado = data.code.trim();
@@ -28,10 +29,10 @@ export const Home: FC = () => {
         }
     };
     useEffect(() => {
-        if (invitados.length === 0) {
-            fetchInvitados()
+        if (store._hasHydrated && invitados.length === 0) {
+            fetchInvitados();
         }
-    }, [fetchInvitados, invitados.length])
+    }, [store._hasHydrated, invitados.length, fetchInvitados]);
     if (loading) return <div>Cargando ...</div>
     if (error) return <div>Error: {error}</div>
     return (

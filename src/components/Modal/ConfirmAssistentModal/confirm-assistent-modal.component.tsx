@@ -8,7 +8,7 @@ import useModal from '../../../assets/hooks/modal.hook';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from '../../Button/Button.component';
 import { DataService } from '../../../assets/service/data.service';
-import useInvitadosStore from '../../../assets/store/invitados.store';
+import { useHydratedInvitadosStore } from '../../../assets/store/invitados.store';
 
 type FormData = {
     attendance: string;
@@ -23,7 +23,8 @@ type FormData = {
 export const ConfirmAssistentModal: FC = () => {
     const { hideModal } = useModal();
     const { control, handleSubmit, formState: { errors }, watch } = useForm<FormData>();
-    const { invitadoActual } = useInvitadosStore();
+    const store = useHydratedInvitadosStore();
+    const { invitadoActual } = store;
     const onSubmit = async (data: FormData) => {
         try {
             const submissionData = {

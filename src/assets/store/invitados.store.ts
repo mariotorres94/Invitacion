@@ -1,7 +1,11 @@
 import { create } from 'zustand';
 import { Invitado } from '../models/invitado.model';
 import { DataService } from '../service/data.service';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { useEffect, useState } from 'react';
+
+const isClient = () => typeof window !== 'undefined';
+
 interface InvitadosStore {
     invitados: Invitado[];
     invitadoActual: Invitado | null;
@@ -13,6 +17,7 @@ interface InvitadosStore {
     clearInvitadoActual: () => void;
     clearInvitados: () => void;
     fetchInvitados: () => Promise<void>;
+    _hasHydrated: boolean;
 }
 
 export const useInvitadosStore = create<InvitadosStore>()(
@@ -22,6 +27,8 @@ export const useInvitadosStore = create<InvitadosStore>()(
             loading: false,
             error: null,
             invitadoActual: null,
+            _hasHydrated: false,
+
             fetchInvitados: async () => {
                 try {
                     set({ loading: true, error: null });
@@ -34,25 +41,46 @@ export const useInvitadosStore = create<InvitadosStore>()(
                     });
                 }
             },
+
             setInvitados: (invitados) => set({ invitados }),
             setInvitadoActual: (invitado) => set({ invitadoActual: invitado }),
-            getInvitadoById: (id) => {
-                return get().invitados.find(invitado => invitado.ID === id);
-            },
+            getInvitadoById: (id) => get().invitados.find(invitado => invitado.ID === id),
             clearInvitadoActual: () => set({ invitadoActual: null }),
             clearInvitados: () => set({ invitados: [] }),
         }),
         {
             name: 'invitados-storage',
-            partialize: (state) => ({
-                invitadoActual: state.invitadoActual ? {
-                    ID: state.invitadoActual.ID,
-                    Familia: state.invitadoActual.Familia,
-                    Pases: state.invitadoActual.Pases,
-                    Confirmacion: state.invitadoActual.Confirmacion,
-                } : null
+            storage: createJSONStorage(() => {
+                if (isClient()) return localStorage;
+                return {
+                    getItem: () => null,
+                    setItem: () => { },
+                    removeItem: () => { }
+                };
             }),
+            partialize: (state) => ({
+                invitadoActual: state.invitadoActual
+            }),
+            onRehydrateStorage: () => (state) => {
+                if (state) state._hasHydrated = true;
+            }
         }
     )
 );
-export default useInvitadosStore;
+
+export const useHydratedInvitadosStore = () => {
+    const store = useInvitadosStore();
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(store._hasHydrated);
+    }, [store._hasHydrated]);
+
+    return isHydrated ? store : {
+        ...store,
+        invitados: [],
+        invitadoActual: null,
+        loading: false,
+        error: null
+    };
+};
