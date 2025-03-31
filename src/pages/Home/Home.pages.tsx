@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect} from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button } from "../../components/Button/Button.component";
-import { Invitado } from "../../assets/models/invitado.model";
 import { DataService } from "../../assets/service/data.service";
 import { useNavigate } from "react-router-dom";
+import { useInvitadosStore } from "../../assets/store/invitados.store";
 
 type FormData = {
     code: string;
@@ -11,16 +11,16 @@ type FormData = {
 
 export const Home:FC = () => {
     const navigate = useNavigate();
-    const [invitados, setInvitados] = useState<Invitado[]>([]);
+    const { setInvitados, invitados, setInvitadoActual } = useInvitadosStore();
     const { control, handleSubmit, formState: { errors }, setError } = useForm<FormData>();
     const onSubmit = (data: FormData) => {
         const codigoIngresado = data.code.trim();
-        console.log("codigo",codigoIngresado)
-        const invitadoEncontrado = invitados.find(invitado => 
+        const invitadoEncontrado = invitados.find(invitado =>
             invitado.ID.toString() === codigoIngresado
         );
         if (invitadoEncontrado) {
-            navigate('/invitacion', { state: { invitado: invitadoEncontrado } });
+            setInvitadoActual(invitadoEncontrado)
+            navigate('/invitacion');
         } else {
             setError('code', {
                 type: 'manual',
@@ -32,15 +32,13 @@ export const Home:FC = () => {
         const fetchInvitados = async () => {
             try {
                 const data = await DataService.getInvitados();
-                console.log("Datos recibidos:", data);
                 setInvitados(data);
             } catch (error) {
                 console.error("Error al cargar invitados:", error);
             }
         };
         fetchInvitados();
-    }, []);
-    console.log("invitados",invitados)
+    }, [setInvitados]);
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-4">

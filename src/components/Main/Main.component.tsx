@@ -9,36 +9,20 @@ import { Portrait } from "../Portrait/Portrait.component";
 import { DressCode } from "../DressCode/DressCode.component";
 import { Gift } from "../Gift/Gift.component";
 import useModal from "../../assets/hooks/modal.hook";
-import { useLocation } from "react-router-dom";
-import { Invitado } from "../../assets/models/invitado.model";
-// import { Invitado } from "../../assets/models/invitado.model";
-// import { DataService } from "../../assets/service/data.service";
+import { useInvitadosStore } from "../../assets/store/invitados.store";
 
 export const Main:FC = () => {
     const { showModal } = useModal();
-    // const [invitados, setInvitados] = useState<Invitado[]>([]);
-    // useEffect(() => {
-    //     const fetchInvitados = async () => {
-    //         try {
-    //             const data = await DataService.getInvitados();
-    //             console.log("Datos recibidos:", data);
-    //             setInvitados(data);
-    //         } catch (error) {
-    //             console.error("Error al cargar invitados:", error);
-    //         }
-    //     };
-    //     fetchInvitados();
-    // }, []);
-    // console.log("invitados",invitados)
-    const location = useLocation();
-    const { invitado } = location.state as { invitado: Invitado };
-    console.log("invitado",invitado)
+    const { invitadoActual } = useInvitadosStore();
+    if (!invitadoActual) {
+        return <div>No se encontró información del invitado</div>;
+    }
     return (
         <div className="flex flex-col justify-center items-center gap-10">
             <ContainerCountdown />
             <Guest
                 title="Están cordialmente invitados a nuestra boda"
-                nameFamily={invitado.Familia}
+                nameFamily={invitadoActual.Familia}
                 subtitle="¡Acompáñanos en el día más especial de nuestras vidas!"
             />
             <ParentsAndPadrinos

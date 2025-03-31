@@ -9,10 +9,5 @@ export const AppLayout: FC = () => {
             <Route path="/" element={<Home />}></Route>
             <Route path="/invitacion" element={<Invitation />}></Route>
         </Routes>
-        // <div className="flex w-full min-h-screen bg-[#93b7c4]/[0.08]">
-        //     <div className="flex w-full min-h-screen">
-        //         <Home />
-        //     </div>
-        // </div>
     )
 }

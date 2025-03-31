@@ -25,15 +25,12 @@ export const ConfirmAssistentModal: FC = () => {
     const { hideModal } = useModal();
     const { control, handleSubmit, formState: { errors }, watch } = useForm<FormData>();
     const onSubmit = async (data: FormData) => {
-        console.log(data);
         try {
             const submissionData = {
                 ...data,
                 familyCode: invitado.ID,
             }
-            console.log("submissionData", submissionData);
             const response = await DataService.sendConfirmaciones(submissionData);
-            console.log("response",response)
             if (response && response.success) {
                 hideModal(EModal.CONFIRMASSISTENT);
             } else {
