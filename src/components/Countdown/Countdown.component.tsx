@@ -1,8 +1,10 @@
 import { FC, useMemo } from "react";
-import { ContentCountdownDesktop, HeartMain, ContentCountdownFlower } from "../../assets/images";
+import { ContentCountdownDesktop, ContentCountdownFlower } from "../../assets/images";
 import Countdown from "react-countdown";
 import { ContentCountdown } from "../ContentCountdown/ContentCountdown.component";
 import { formatTwoDigits } from "../../assets/utils/countdown.utils";
+import { HeartMain } from "../../assets/icons";
+import { motion } from "framer-motion";
 
 export const ContainerCountdown: FC = () => {
     const dateMarried = useMemo(() => new Date("2025-07-26T12:00:00"), []);
@@ -38,7 +40,22 @@ export const ContainerCountdown: FC = () => {
                         </div>
                     </div>
                     <div className="flex justify-center items-center mt-4">
-                        <img src={HeartMain} alt="Heart" className="w-[30px]" />
+                        <div className="flex justify-center items-center mt-4">
+                            <motion.img
+                                src={HeartMain}
+                                alt="Heart"
+                                className="w-[35px]"
+                                animate={{
+                                    scale: [1, 1.3, 1],
+                                    opacity: [1, 0.8, 1],
+                                }}
+                                transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,7 +69,7 @@ export const ContainerCountdown: FC = () => {
             className="w-[70%] md:w-[40%]"
             contentImage={ContentCountdownDesktop}
         >
-            <Countdown date={dateMarried} renderer={renderer}/>
+            <Countdown date={dateMarried} renderer={renderer} />
         </ContentCountdown>
     )
 }

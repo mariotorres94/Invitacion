@@ -1,8 +1,9 @@
 import { FC } from "react"
 import { GiftSeparate } from "../../assets/images"
 import { Button } from "../Button/Button.component";
-import { GiftIcon } from "../../assets/gifts";
 import { EModal } from "../../assets/shared/enums/modal.enum";
+import { GiftIcon } from "../../assets/icons";
+import { motion } from "framer-motion";
 
 interface GiftProps {
     title: string;
@@ -10,7 +11,7 @@ interface GiftProps {
     showModal: (modal: string, data?: unknown) => void;
 }
 
-export const Gift: FC<GiftProps> = ({title,subTitle,showModal}) => {
+export const Gift: FC<GiftProps> = ({ title, subTitle, showModal }) => {
     const handleShowModal = () => {
         if (showModal) {
             showModal(EModal.GIFT);
@@ -26,11 +27,24 @@ export const Gift: FC<GiftProps> = ({title,subTitle,showModal}) => {
                 <p className="font-cormorant-upright text-lg md:text-xl text-[#809FC3]">{subTitle}</p>
             </div>
             <div className="flex flex-col gap-4 justify-center items-center mx-24">
-                <div className="pt-4 mx-auto">
-                    <img src={GiftIcon} alt="" width={60} height={60}/>
-                </div>
+                <motion.div
+                    className="pt-4 mx-auto"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{
+                        opacity: 1,
+                        y: [0, -10, 0],
+                        scale: [1, 1.05, 1]
+                    }}
+                    transition={{
+                        opacity: { duration: 1 },
+                        y: { duration: 3, repeat: Infinity },
+                        scale: { duration: 2, repeat: Infinity }
+                    }}
+                >
+                    <img src={GiftIcon} alt="Regalo" width={60} height={60} />
+                </motion.div>
                 <div className="w-36 h-10 flex justify-center items-center">
-                    <Button text="Ver más" color="#193C69" onclick={handleShowModal}/>
+                    <Button text="Ver más" color="#193C69" onclick={handleShowModal} />
                 </div>
             </div>
         </div>

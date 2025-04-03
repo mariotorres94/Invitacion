@@ -1,18 +1,19 @@
 import { FC } from "react"
-import { DressWomen, DressMan } from "../../assets/gifts";
 import { FlowerDresscode, FlowerSeparate } from "../../assets/images";
 import { Card } from "../Card/Card.component";
 import { HeaderDressCode } from "./components/HeaderDressCode.component";
 import { MainDressCode } from "./components/MainDressCode.component";
 import { FooterDressCode } from "./components/FooterDressCode.component";
+import { DressCodeMan, DressCodeWomen } from "../../assets/icons";
 
 interface DressCodeProps {
+    id?: string;
     title: string;
     subTitle: string;
     showModal: (modal: string, data?: unknown) => void;
 }
 
-export const DressCode: FC<DressCodeProps> = ({ title, subTitle, showModal }) => {
+export const DressCode: FC<DressCodeProps> = ({ id, title, subTitle, showModal }) => {
     return (
         <Card
             image={FlowerDresscode}
@@ -20,7 +21,7 @@ export const DressCode: FC<DressCodeProps> = ({ title, subTitle, showModal }) =>
             width="w-40 sm:w-60"
             className="sm:w-[70%] md:w-[50%] shadow-lg border rounded-lg"
         >
-            <div className="flex flex-col gap-4 justify-center items-center text-center mx-10">
+            <div id={id} className="flex flex-col gap-4 justify-center items-center text-center mx-10">
                 <HeaderDressCode
                     title={title}
                     subtitle={subTitle}
@@ -31,8 +32,8 @@ export const DressCode: FC<DressCodeProps> = ({ title, subTitle, showModal }) =>
                 <MainDressCode
                     title="Dress Code"
                     subTitle="Elegante"
-                    gifts={[DressWomen, DressMan]}
-                    nota="¡Aquí una orientación para tu vestuario!"
+                    gifts={[DressCodeWomen, DressCodeMan]}
+                    nota="Una orientación para tu vestuario"
                     showModal={showModal}
                 />
                 <div className="sm:w-[70%] md:w-[60%]">

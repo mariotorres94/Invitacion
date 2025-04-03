@@ -4,7 +4,6 @@ export { default as BgHeaderMobile } from '../images/bg-header-mobile.svg';
 export { default as FlowerR } from '../images/flower-r.svg';
 export { default as FlowerL } from '../images/flower-l.svg';
 export { default as ContentCountdownDesktop } from '../images/content-countdown.svg';
-export { default as HeartMain } from '../images/heart-main.svg';
 export { default as BgRecortePaper } from '../images/bg-recorte.paper.svg';
 export { default as EndGuest } from '../images/end-guest.svg';
 export { default as Flower } from '../images/flower.svg';

@@ -1,7 +1,8 @@
 import { FC } from "react"
 import { Button } from "../../Button/Button.component";
 import { EModal } from "../../../assets/shared/enums/modal.enum";
-
+import { motion } from "framer-motion";
+import { container, floatAnimation, item } from "../../../assets/utils/programation.utils";
 interface MainDressCodeProps {
     title: string;
     subTitle: string;
@@ -22,18 +23,36 @@ export const MainDressCode: FC<MainDressCodeProps> = ({ title, subTitle, gifts, 
                 <h3 className="font-poppins sm:text-xl">{title}</h3>
                 <p className="font-josefin-sans-light sm:text-lg">{subTitle}</p>
             </div>
-            <div className="w-full flex justify-evenly md:justify-center md:gap-16 items-center py-5 md:py-10">
-                {
-                    gifts.map((gift, index) => (
-                        <div key={index} className="rounded-full shadow-lg overflow-hidden w-20 sm:w-24">
-                            <img src={gift} alt="Gift" />
-                        </div>
-                    ))
-                }
+            <div className="w-full">
+                <motion.div
+                    className="w-full flex justify-evenly md:justify-center md:gap-16 items-center py-5 md:py-10"
+                    variants={container}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    {gifts.map((gift, index) => (
+                        <motion.div
+                            key={index}
+                            className="rounded-full shadow-lg w-20 sm:w-24 flex justify-center items-center p-1 bg-white/10"
+                            variants={item}
+                        >
+                            <motion.img
+                                src={gift}
+                                alt="Gift"
+                                className="w-full h-full object-contain p-2"
+                                animate={floatAnimation}
+                                style={{
+                                    maxWidth: "85%",
+                                    maxHeight: "85%",
+                                }}
+                            />
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
-            <p className="font-poppins-light text-sm">{nota}</p>
+            <p className="w-[50%] font-poppins-light text-sm">{nota}</p>
             <div className="w-36 h-10 flex justify-center items-center">
-                <Button text="Ver detalle" color="#193C69" onclick={handleShowModal}/>
+                <Button text="Ver detalle" color="#193C69" onclick={handleShowModal} />
             </div>
         </div>
     )

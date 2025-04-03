@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { FooterBg, FooterBgDesktop } from "../../assets/images";
 import { useScreenSize } from '../../assets/hooks/useScreenSize.hook';
+import { handleLinkClick } from "../../assets/utils/footer.utils";
 
 interface FooterProps {
     logo: string;
@@ -23,7 +24,7 @@ export const Footer:FC<FooterProps> = ({ logo, links, mensaje, wedding }) => {
                     <div className="flex flex-col gap-4 text-[#456EA1] text-xs text-center sm:text-right sm:text-base md:text-lg">
                         {
                             links.map((link, index) => (
-                                <a href="" key={index} className="underline">{link}</a>
+                                <a href="#" key={index} className="underline" onClick={(e) => { e.preventDefault(); handleLinkClick(link) }}>{link}</a>
                             ))
                         }
                         <p className="font-cormorant-upright no-underline text-sm sm:text-base">{wedding}</p>

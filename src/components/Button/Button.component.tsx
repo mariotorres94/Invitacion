@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Location } from "../../assets/images";
 
 interface ButtonProps {
+    id?: string;
     text: string;
     color?: string;
     icon?: boolean;
@@ -10,7 +11,7 @@ interface ButtonProps {
     target?: "_blank" | "_self";
 }
 
-export const Button: FC<ButtonProps> = ({ text, color, icon, href, onclick, target="_self" }) => {
+export const Button: FC<ButtonProps> = ({ id, text, color, icon, href, onclick, target="_self" }) => {
     const handleClick = () => {
         if (href) {
             if (target === "_blank") {
@@ -23,6 +24,6 @@ export const Button: FC<ButtonProps> = ({ text, color, icon, href, onclick, targ
         }
     };
     return (
-        <button onClick={handleClick} style={{ backgroundColor: color }} className={`w-full h-full flex gap-2 items-center justify-center py-1 rounded-md text-white font-poppins text-[12px] px-4`}>{icon && (<><img src={Location} alt="Location" className="w-4"/></>)} {text}</button>
+        <button id={id} onClick={handleClick} style={{ backgroundColor: color }} className={`w-full h-full flex gap-2 items-center justify-center py-1 rounded-md text-white font-poppins text-[12px] px-4`}>{icon && (<><img src={Location} alt="Location" className="w-4"/></>)} {text}</button>
     )
 }

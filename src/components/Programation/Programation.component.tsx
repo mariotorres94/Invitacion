@@ -2,6 +2,7 @@ import { FC } from "react"
 import { TimeLine } from "../TimeLine/TimeLine.component";
 
 interface ProgramationProps {
+    id?: string;
     title: string;
     subtitle: string;
     imgElement?: string[];
@@ -10,9 +11,9 @@ interface ProgramationProps {
     showModal: (modal: string, data?: unknown) => void;
 }
 
-export const Programation: FC<ProgramationProps> = ({ title, subtitle, imgElement, imgElementFooter, endElement, showModal }) => {
+export const Programation: FC<ProgramationProps> = ({ id, title, subtitle, imgElement, imgElementFooter, endElement, showModal }) => {
     return (
-        <div className="w-full text-center md:mt-10">
+        <div id={id} className="w-full text-center md:mt-10">
             <div className="flex flex-col gap-4 items-center px-4">
                 <h2 className="font-styleScript text-3xl sm:text-4xl md:text-5xl text-[#456EA1]">{title}</h2>
                 <p className="md:w-[47%] font-cormorant-upright text-base sm:text-xl sm:px-20 md:text-2xl text-[#809FC3]">{subtitle}</p>

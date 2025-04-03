@@ -40,6 +40,7 @@ export const Main:FC = () => {
                 <img src={EndGuest} alt="End" className="w-[75%] sm:w-[45%] md:w-[30%]"/>
             </div>
             <Programation
+                id="programacion-section"
                 title="Programación"
                 subtitle="“Cada minuto cuenta en esta celebración de amor. Por favor, sé puntual para no perderte ningún momento especial”"
                 imgElement={[FlowerR,FlowerL]}
@@ -54,6 +55,7 @@ export const Main:FC = () => {
                 endElement={EndGuest}
             />
             <DressCode
+                id="dresscode-section"
                 title="Fiesta"
                 subTitle="Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta."
                 showModal={showModal}

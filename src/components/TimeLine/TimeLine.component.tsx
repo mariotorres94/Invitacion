@@ -86,7 +86,7 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
             </div>
             <div className="flex flex-col justify-center items-center px-20">
                 <div className="h-10 flex justify-center items-center">
-                    <Button text="¡Confirmar mi asistencia!" color="#193C69" onclick={handleShowModal} />
+                    <Button id="confirm-button" text="¡Confirmar mi asistencia!" color="#193C69" onclick={handleShowModal} />
                 </div>
                 <div className="w-52 sm:w-[43%] mt-4">
                     <span className="text-[#193C69]">IMPORTANTE</span>
