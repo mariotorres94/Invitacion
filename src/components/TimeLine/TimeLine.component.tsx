@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Place } from "./Components/Place/Place.component";
 import { Icons } from "./Components/Icons/Icons.component";
 import { Address } from "./Components/Address/Address.component";
-import { Church, Hoops, Glasses, MirrorBall, Meal } from "../../assets/images";
+import { Church, Hoops, MirrorBall, Meal } from "../../assets/images";
 import { Button } from "../Button/Button.component";
 import { Heart } from "../../assets/gifts";
 import { EModal } from "../../assets/shared/enums/modal.enum";
@@ -22,7 +22,7 @@ const timelineEvents: Array<{
     {
         title: "Ceremonia Religiosa",
         place: "Parroquia El Santísimo Salvador de Pachacámac",
-        hour: "12:00 p.m.",
+        hour: "11:00 a.m.",
         address: "Jr. Comercio 505, Pachacámac 15823",
         icon1: Church,
         icon2: Heart,
@@ -34,7 +34,7 @@ const timelineEvents: Array<{
     {
         title: "Ceremonia Civil",
         place: "Villa Doris",
-        hour: "2:00 p.m.",
+        hour: "1:30 p.m.",
         address: "Calle 10 Mz. S Lt. 6 Pachacamac",
         icon1: Hoops,
         icon2: Heart,
@@ -42,15 +42,6 @@ const timelineEvents: Array<{
         view: true,
         href: "https://maps.app.goo.gl/ZfMvq8ARb79mNSTu5",
         target: "_blank"
-    },
-    {
-        title: "Brindis",
-        place: "",
-        hour: "3:30 p.m.",
-        address: "",
-        icon1: Glasses,
-        icon2: '',
-        view: false,
     },
     {
         title: "Almuerzo",
@@ -62,9 +53,9 @@ const timelineEvents: Array<{
         view: false,
     },
     {
-        title: "Baile",
+        title: "Fiesta",
         place: "",
-        hour: "4:00 p.m.",
+        hour: "5:00 p.m.",
         address: "",
         icon1: MirrorBall,
         icon2: "",

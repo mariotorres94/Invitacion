@@ -41,3 +41,10 @@ export { default as FOTO310 } from '../images/FOTO-310.jpg';
 export { default as FOTO329 } from '../images/FOTO-329.jpg';
 export { default as FOTO359 } from '../images/FOTO-359.jpg';
 export { default as FOTO365 } from '../images/FOTO-365.jpg';
+
+export { default as Tapa1 } from '../images/tapa-1-mobile.svg';
+export { default as Tapa2 } from '../images/tapa-2-mobile.svg';
+export { default as Tapa1Desktop } from '../images/tapa-1-desktop.svg';
+export { default as Tapa2Desktop } from '../images/tapa-2-desktop.svg';
+export { default as Background } from '../images/background-all.svg';
+export { default as Sello } from '../images/Sello.svg';

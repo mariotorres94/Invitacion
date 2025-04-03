@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Modal } from '../Modal.component';
 import { EModal } from '../../../assets/shared/enums/modal.enum';
 import { Card } from '../../Card/Card.component';
@@ -8,7 +8,7 @@ import useModal from '../../../assets/hooks/modal.hook';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from '../../Button/Button.component';
 import { DataService } from '../../../assets/service/data.service';
-import { useHydratedInvitadosStore } from '../../../assets/store/invitados.store';
+import { useInvitadosStore } from '../../../assets/store/invitados.store';
 
 type FormData = {
     attendance: string;
@@ -23,13 +23,11 @@ type FormData = {
 export const ConfirmAssistentModal: FC = () => {
     const { hideModal } = useModal();
     const { control, handleSubmit, formState: { errors }, watch } = useForm<FormData>();
-    const store = useHydratedInvitadosStore();
-    const { invitadoActual } = store;
     const onSubmit = async (data: FormData) => {
         try {
             const submissionData = {
                 ...data,
-                familyCode: invitadoActual?.ID,
+                familyCode: invitadoEncontrado?.ID,
             }
             const response = await DataService.sendConfirmaciones(submissionData);
             if (response && response.success) {
@@ -42,6 +40,10 @@ export const ConfirmAssistentModal: FC = () => {
         }
     };
     const attendance = watch('attendance');
+    const { invitadoEncontrado, loadFromStorage } = useInvitadosStore();
+    useEffect(() => {
+        loadFromStorage();
+    },[loadFromStorage]);
     return (
         <Modal modalId={EModal.CONFIRMASSISTENT} className='w-[85%] md:w-[45%]'>
             <Card
@@ -93,7 +95,7 @@ export const ConfirmAssistentModal: FC = () => {
                         {
                             attendance === 'si' && (
                                 <>
-                                    <p className='font-josefin-sans-light'>Tienes {invitadoActual?.Pases} pase</p>
+                                    <p className='font-josefin-sans-light'>Tienes {invitadoEncontrado?.Pases} pase</p>
                                     <div className="mt-4">
                                         <Controller
                                             name="fullName"
@@ -139,9 +141,9 @@ export const ConfirmAssistentModal: FC = () => {
                                         <img src={FlowerSeparate} alt="Flower" />
                                     </div>
                                     {
-                                        invitadoActual && invitadoActual.Pases > 1 && (
+                                        invitadoEncontrado && invitadoEncontrado.Pases > 1 && (
                                             <div className='space-y-4'>
-                                                {[...Array(invitadoActual && invitadoActual.Pases - 1)].map((_, index) => (
+                                                {[...Array(invitadoEncontrado && invitadoEncontrado.Pases - 1)].map((_, index) => (
                                                     <div key={index}>
                                                         <Controller
                                                             name={`guest.${index}.nombre`}

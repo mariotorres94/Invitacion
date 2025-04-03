@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { ContainerCountdown } from "../Countdown/Countdown.component";
 import { Guest } from "../Guest/Guest.component";
 import { EndGuest, FlowerLFooter, FlowerRFooter, FlowerParent } from "../../assets/images";
@@ -13,16 +13,16 @@ import { useInvitadosStore } from "../../assets/store/invitados.store";
 
 export const Main:FC = () => {
     const { showModal } = useModal();
-    const { invitadoActual } = useInvitadosStore();
-    if (!invitadoActual) {
-        return <div>No se encontró información del invitado</div>;
-    }
+    const { invitadoEncontrado, loadFromStorage } = useInvitadosStore();
+    useEffect(() => {
+        loadFromStorage();
+    },[loadFromStorage]);
     return (
         <div className="flex flex-col justify-center items-center gap-10">
             <ContainerCountdown />
             <Guest
                 title="Están cordialmente invitados a nuestra boda"
-                nameFamily={invitadoActual.Familia}
+                nameFamily={invitadoEncontrado?.Familia ?? ''}
                 subtitle="¡Acompáñanos en el día más especial de nuestras vidas!"
             />
             <ParentsAndPadrinos

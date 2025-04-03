@@ -5,6 +5,7 @@ export type ModalState = {
     data: Record<string, unknown>;
     showModal: (modal: string, data?: unknown) => void;
     hideModal: (modal: string) => void;
+    isModalOpen: (modal: string) => boolean;
 }
 
 const initialState: ModalState = {
@@ -12,6 +13,7 @@ const initialState: ModalState = {
     data: {},
     showModal: () => {},
     hideModal: () => {},
+    isModalOpen: () => false,
 }
 
 const ModalContext = createContext<ModalState>(initialState);
@@ -51,9 +53,13 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
         dispatch({ type: "HIDE_MODAL", modal });
     }, []);
 
+    const isModalOpen = useCallback((modal: string): boolean => {
+        return !!state.modals[modal];
+    }, [state.modals]);
+
     const value = useMemo(
-        () => ({ ...state, showModal, hideModal }),
-        [state, showModal, hideModal]
+        () => ({ ...state, showModal, hideModal, isModalOpen }),
+        [state, showModal, hideModal, isModalOpen]
     )
 
     return (

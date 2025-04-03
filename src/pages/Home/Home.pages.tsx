@@ -1,62 +1,59 @@
-import { FC, useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { Button } from "../../components/Button/Button.component";
-import { useNavigate } from "react-router-dom";
-import { useHydratedInvitadosStore } from "../../assets/store/invitados.store";
+import { FC, useEffect, useState } from "react";
+import { Background, Sello, Tapa1, Tapa1Desktop, Tapa2, Tapa2Desktop } from "../../assets/images";
+import useModal from "../../assets/hooks/modal.hook";
+import { EModal } from "../../assets/shared/enums/modal.enum";
+import { useScreenSize } from "../../assets/hooks/useScreenSize.hook";
+import { useInvitadosStore } from "../../assets/store/invitados.store";
 
-type FormData = {
-    code: string;
-};
-
-export const Home: FC = () => {
-    const navigate = useNavigate();
-    const store = useHydratedInvitadosStore();
-    const { invitados, loading, error, fetchInvitados, setInvitadoActual } = store;
-    const { control, handleSubmit, formState: { errors }, setError } = useForm<FormData>();
-    const onSubmit = (data: FormData) => {
-        const codigoIngresado = data.code.trim();
-        const invitadoEncontrado = invitados.find(invitado =>
-            invitado.ID.toString() === codigoIngresado
-        );
-        if (invitadoEncontrado) {
-            setInvitadoActual(invitadoEncontrado)
-            navigate('/invitacion');
-        } else {
-            setError('code', {
-                type: 'manual',
-                message: 'Código no válido. Por favor, verifique e intente nuevamente.'
-            });
+export const Home:FC = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const { showModal, isModalOpen } = useModal();
+    const { invitados, fetchInvitados } = useInvitadosStore();
+    const screenSize = useScreenSize();
+    const modalCode = EModal.CODE;
+    const handleShowModal = () => {
+        setIsOpen(true);
+        if (showModal) {
+            setTimeout(() => {
+                showModal(EModal.CODE);
+            }, 1000)
         }
     };
     useEffect(() => {
-        if (store._hasHydrated && invitados.length === 0) {
-            fetchInvitados();
+        const modalIsOpen = isModalOpen(modalCode);
+        if (!modalIsOpen) {
+            setIsOpen(false);
         }
-    }, [store._hasHydrated, invitados.length, fetchInvitados]);
-    if (loading) return <div>Cargando ...</div>
-    if (error) return <div>Error: {error}</div>
+    }, [isModalOpen, modalCode]);
+    useEffect(() => {
+        fetchInvitados();
+    },[fetchInvitados]);
+    if (invitados.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center h-screen">
+                <div className="flex items-center justify-center gap-2 animate-pulse">
+                    <span className="text-pink-400 text-2xl">🌸</span>
+                    <span className="text-blue-400 text-2xl">🌸</span>
+                    <span className="text-pink-400 text-2xl">🌸</span>
+                </div>
+                <p className="mt-4 text-gray-600 text-xl">Preparando invitación...</p>
+            </div>
+        );
+    }
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mt-4">
-                <Controller
-                    name="code"
-                    control={control}
-                    defaultValue=""
-                    rules={{ required: 'Por favor ingresa tu nombre completo' }}
-                    render={({ field }) => (
-                        <input
-                            {...field}
-                            type="text"
-                            placeholder="Ingrese su código de autorización"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                        />
-                    )}
-                />
-                {errors.code && <p className="text-red-500 text-sm">{errors.code.message}</p>}
+        <div
+            className="relative top-0 bottom-0 -mt-6 flex justify-center items-center h-[calc(100vh+24px)] bg-cover bg-center overflow-hidden"
+            style={{ backgroundImage: `url(${Background})` }}
+        >
+            <div className={`absolute top-0 -left-6 z-50 md:-left-12 md:-top-3 h-[110vh] transition-transform duration-1000 ease-in ${isOpen ? 'transform -translate-x-1/2' : ''}`}>
+                <img src={screenSize === 'mobile' ? Tapa1 : Tapa1Desktop} alt="" className="h-full w-auto"/>
             </div>
-            <div className="w-full mt-4 h-10 flex justify-center items-center">
-                <Button text="Enviar" color="#193C69" />
+            <div className="absolute top-68 z-50 md:top-60 cursor-pointer">
+                <img src={Sello} alt="" width={screenSize === 'mobile' ? 160 : 250} onClick={handleShowModal}/>
             </div>
-        </form>
+            <div className={`absolute top-0 -right-9 md:-right-12 md:-top-4 h-[110vh] transition-transform duration-1000 ease-in ${isOpen ? 'transform translate-x-1/2' : ''}`}>
+                <img src={screenSize === 'mobile' ? Tapa2 : Tapa2Desktop} alt="" className="h-full w-auto"/>
+            </div>
+        </div>
     );
 }
