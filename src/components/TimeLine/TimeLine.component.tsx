@@ -75,9 +75,9 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
     };
     return (
         <div className="w-full flex flex-col gap-4 justify-center items-center">
-            <div className="md:relative md:-top-14">
+            <div className="w-[60%] md:relative md:-top-14">
                 {timelineEvents.map((event, index) => (
-                    <div key={index} className="flex flex-col items-center sm:flex-row sm:justify-center sm:items-start gap-4 sm:gap-0">
+                    <div key={index} className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:items-start">
                         <Place title={event.title} place={event.place} view={event.view}/>
                         <Icons icon1={event.icon1} icon2={event.icon2} isLast={index === timelineEvents.length - 1} />
                         <Address hour={event.hour} address={event.address} textButton={event.textButton} isLast={index === timelineEvents.length - 1} view={event.view} href={event.href} target={event.target} />
@@ -85,12 +85,12 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
                 ))}
             </div>
             <div className="flex flex-col justify-center items-center px-20">
-                <div className="h-10 flex justify-center items-center">
+                <div className="h-10 flex justify-center items-center md:h-14 md:w-72">
                     <Button id="confirm-button" text="¡Confirmar mi asistencia!" color="#193C69" onclick={handleShowModal} />
                 </div>
                 <div className="w-52 sm:w-[43%] mt-4">
-                    <span className="text-[#193C69]">IMPORTANTE</span>
-                    <p className="font-josefin-sans-light">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-bold">30 de abril</span></p>
+                    <span className="text-[#193C69] md:text-xl">IMPORTANTE</span>
+                    <p className="font-josefin-sans-light md:text-xl">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-bold">30 de abril</span></p>
                 </div>
             </div>
         </div>

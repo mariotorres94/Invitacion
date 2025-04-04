@@ -19,15 +19,15 @@ export const Footer:FC<FooterProps> = ({ logo, links, mensaje, wedding }) => {
             className="relative top-14 -mt-10 flex flex-col gap-4 items-center justify-center w-full bg-cover bg-center pt-28 h-[55vh] sm:h-[60vh] sm:pt-20 sm:px-5 md:px-16"
             style={{ backgroundImage: `url(${bgImage})` }}
         >
-            <div className="w-full flex flex-col-reverse gap-4 sm:flex-row-reverse justify-between items-center mb-5">
+            <div className="w-full flex flex-col-reverse gap-4 sm:flex-row-reverse justify-between items-center mb-5 md:mb-14">
                 <div className="flex justify-center items-center text-right px-4">
-                    <div className="flex flex-col gap-4 text-[#456EA1] text-xs text-center sm:text-right sm:text-base md:text-lg">
+                    <div className="flex flex-col gap-4 text-[#456EA1] text-xs text-center sm:text-right sm:text-base md:text-lg xl:text-2xl">
                         {
                             links.map((link, index) => (
                                 <a href="#" key={index} className="underline" onClick={(e) => { e.preventDefault(); handleLinkClick(link) }}>{link}</a>
                             ))
                         }
-                        <p className="font-cormorant-upright no-underline text-sm sm:text-base">{wedding}</p>
+                        <p className="font-cormorant-upright no-underline text-sm sm:text-base md:text-2xl">{wedding}</p>
                     </div>
                 </div>
                 <h1 className="flex font-extrabold gap-4 md:gap-8 font-tangerine text-4xl sm:text-5xl md:text-7xl text-[#456EA1] mb-2 md:mb-0">
@@ -38,7 +38,7 @@ export const Footer:FC<FooterProps> = ({ logo, links, mensaje, wedding }) => {
                     {titleParts[1]}
                 </h1>
             </div>
-            <p className="text-xs sm:text-base mb-5">{mensaje}</p>
+            <p className="text-xs sm:text-base mb-5 md:mb-0 md:text-xl">{mensaje}</p>
         </div>
     )
 }

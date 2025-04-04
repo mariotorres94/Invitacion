@@ -4,7 +4,7 @@ import { FOTO104, FOTO173, FOTO237, FOTO241, FOTO246, FOTO310, FOTO329, FOTO359,
 interface PortraitProps {
     title: string;
     subTitle: string;
-    gif: string;
+    gif?: string;
     imgs?: string[];
     endElement?: string;
 }
@@ -23,7 +23,7 @@ const imgs = [
     { img: `${FOTO365}`, title: "FOTO365" },
 ];
 
-export const Portrait: FC<PortraitProps> = ({ title, subTitle, gif }) => {
+export const Portrait: FC<PortraitProps> = ({ title, subTitle }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -32,10 +32,6 @@ export const Portrait: FC<PortraitProps> = ({ title, subTitle, gif }) => {
         }, 5000);
         return () => clearInterval(interval);
     }, []);
-
-    // const nextImage = () => {
-    //     setCurrentIndex((prevIndex) => (prevIndex + 1) % imgs.length);
-    // };
 
     const goToImage = (index: number) => {
         setCurrentIndex(index);
@@ -47,9 +43,8 @@ export const Portrait: FC<PortraitProps> = ({ title, subTitle, gif }) => {
                 <div className="flex flex-col gap-4 px-10 justify-center items-center">
                     <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-styleScript">{title}</h2>
                     <p className="font-cormorant-upright text-white text-base sm:text-xl md:text-2xl">{subTitle}</p>
-                    <img src={gif} alt="" className="w-24"/>
                 </div>
-                <div className="relative flex items-center justify-center w-full h-[400px] mt-6">
+                <div className="relative flex items-center justify-center w-full h-[400px] md:h-[550px] mt-6">
                     {imgs.map((img, index) => {
                         const isActive = index === currentIndex;
                         const isNext =
@@ -63,17 +58,17 @@ export const Portrait: FC<PortraitProps> = ({ title, subTitle, gif }) => {
                                 key={index}
                                 className={`absolute transition-all duration-500 cursor-pointer ${
                                     isActive
-                                        ? "w-[250px] h-[350px] z-20 scale-110"
-                                        : "w-[200px] h-[300px] z-10 opacity-50"
-                                } ${isPrev ? "-translate-x-40" : isNext ? "translate-x-40" : ""}`}
+                                        ? "w-[250px] h-[350px] md:w-[350px] md:h-[450px] z-20 scale-110"
+                                        : "w-[200px] h-[300px] md:w-[300px] md:h-[420px] z-10 opacity-50"
+                                } ${isPrev ? "-translate-x-40 md:-translate-x-96" : isNext ? "translate-x-40 md:translate-x-96" : ""}`}
                                 onClick={() => goToImage(index)}
                             >
                                 <div
-                                    className={`absolute -top-3 left-[108px] flex items-center justify-center z-30 transition-opacity duration-500 ${
+                                    className={`absolute -top-3 left-[108px] md:left-[155px] md:-top-4 flex items-center justify-center z-30 transition-opacity duration-500 ${
                                         isActive ? "opacity-100" : "opacity-0"
                                     }`}
                                 >
-                                    <img src={HeartTimeLine} alt="" className="w-8 h-8"/>
+                                    <img src={HeartTimeLine} alt="" className="w-8 h-8 md:w-12 md:h-12"/>
                                 </div>
                                 <div className="relative w-full h-full bg-[#D9D9D9] border-4 border-white flex items-center justify-center rounded-lg shadow-lg overflow-hidden">
                                     <img
@@ -83,11 +78,11 @@ export const Portrait: FC<PortraitProps> = ({ title, subTitle, gif }) => {
                                     />
                                 </div>
                                 <div
-                                    className={`absolute -bottom-4 left-[108px] flex items-center justify-center z-30 transition-opacity duration-500 ${
+                                    className={`absolute -bottom-4 left-[108px] md:left-[155px] md:-bottom-6 flex items-center justify-center z-30 transition-opacity duration-500 ${
                                         isActive ? "opacity-100" : "opacity-0"
                                     }`}
                                 >
-                                    <img src={HeartTimeLine} alt="" className="w-8 h-8"/>
+                                    <img src={HeartTimeLine} alt="" className="w-8 h-8 md:w-12 md:h-12"/>
                                 </div>
                             </div>
                         );

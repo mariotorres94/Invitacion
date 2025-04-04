@@ -21,14 +21,14 @@ export const Programation: FC<ProgramationProps> = ({ id, title, subtitle, imgEl
             <div className="flex flex-row-reverse justify-between">
                 {
                     imgElement?.map((img, index) => (
-                        <img src={img} alt="Programation" key={index} className="w-24 sm:w-32"/>
+                        <img src={img} alt="Programation" key={index} className="w-24 sm:w-32 md:w-48"/>
                 ))}
             </div>
             <TimeLine showModal={showModal} />
             <div className="flex flex-row-reverse justify-between">
                 {
                     imgElementFooter?.map((img, index) => (
-                        <img src={img} alt="Programation" key={index} className="w-24 sm:w-32"/>
+                        <img src={img} alt="Programation" key={index} className="w-24 sm:w-32 md:w-48"/>
                 ))}
             </div>
             <div className="flex justify-center items-center w-full mt-10 mb-14 sm:mt-0 sm:mb-0">

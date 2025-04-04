@@ -22,8 +22,14 @@ export const DressCodeModal: FC = () => {
                 <div className='font-poppins-regular text-[#456EA1]'>
                     <h3>Colores reservados para los <span className='font-poppins'>novios</span></h3>
                     <div className='flex justify-around my-5'>
-                        <div className='w-16 h-16 rounded-full shadow-xl bg-[#FFFFFF]'></div>
-                        <div className='w-16 h-16 rounded-full shadow-xl bg-[#98AEC3]'></div>
+                        <div className='flex flex-col items-center gap-4'>
+                            <div className='w-16 h-16 rounded-full shadow-xl border border-[#d6d6d6] bg-[#FFFFFF]'></div>
+                            <span className='font-poppins-regular text-sm'>Blanco - Ivory</span>
+                        </div>
+                        <div className='flex flex-col items-center gap-4'>
+                            <div className='w-16 h-16 rounded-full shadow-xl border border-[#d6d6d6] bg-[#98AEC3]'></div>
+                            <span className='font-poppins-regular text-sm'>Dusty Blue</span>
+                        </div>
                     </div>
                     <h3>Colores sugeridos para <span className='font-poppins'>invitados</span></h3>
                     <div className='flex flex-wrap justify-evenly my-10 gap-4'>

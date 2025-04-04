@@ -4,7 +4,7 @@ import { Guest } from "../Guest/Guest.component";
 import { EndGuest, FlowerLFooter, FlowerRFooter, FlowerParent } from "../../assets/images";
 import { ParentsAndPadrinos } from "../ParentsAndPadrinos/ParentsAndPadrinos.component";
 import { Programation } from "../Programation/Programation.component";
-import { FlowerR, FlowerL, CameraAnimation } from "../../assets/images";
+import { FlowerR, FlowerL } from "../../assets/images";
 import { Portrait } from "../Portrait/Portrait.component";
 import { DressCode } from "../DressCode/DressCode.component";
 import { Gift } from "../Gift/Gift.component";
@@ -51,7 +51,6 @@ export const Main:FC = () => {
             <Portrait
                 title="Retratos de Nuestro Amor"
                 subTitle="Un minuto, un segundo, un instante que queda en la eternidad"
-                gif={CameraAnimation}
                 endElement={EndGuest}
             />
             <DressCode
@@ -62,7 +61,7 @@ export const Main:FC = () => {
             />
             <Gift
                 title="Regalos"
-                subTitle="Si deseas regalarnos algo más que tu hermosa presencia..."
+                // subTitle="Si deseas regalarnos algo más que tu hermosa presencia..."
                 showModal={showModal}
             />
         </div>

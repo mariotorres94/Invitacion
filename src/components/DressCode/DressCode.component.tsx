@@ -19,7 +19,7 @@ export const DressCode: FC<DressCodeProps> = ({ id, title, subTitle, showModal }
             image={FlowerDresscode}
             position="-top-10 -left-6 sm:-top-10 sm:-top-14 sm:-left-14"
             width="w-40 sm:w-60"
-            className="sm:w-[70%] md:w-[50%] shadow-lg border rounded-lg"
+            className="sm:w-[70%] md:w-[50%] shadow-lg border rounded-lg md:pb-6"
         >
             <div id={id} className="flex flex-col gap-4 justify-center items-center text-center mx-10">
                 <HeaderDressCode

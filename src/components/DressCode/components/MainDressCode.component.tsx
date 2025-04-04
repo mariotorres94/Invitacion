@@ -19,9 +19,9 @@ export const MainDressCode: FC<MainDressCodeProps> = ({ title, subTitle, gifts, 
     };
     return (
         <div className="w-full flex flex-col justify-center items-center gap-4">
-            <div>
-                <h3 className="font-poppins sm:text-xl">{title}</h3>
-                <p className="font-josefin-sans-light sm:text-lg">{subTitle}</p>
+            <div className="md:flex md:flex-col md:gap-4">
+                <h3 className="font-poppins sm:text-xl md:text-2xl">{title}</h3>
+                <p className="font-josefin-sans-light sm:text-lg md:text-xl">{subTitle}</p>
             </div>
             <div className="w-full">
                 <motion.div
@@ -33,7 +33,7 @@ export const MainDressCode: FC<MainDressCodeProps> = ({ title, subTitle, gifts, 
                     {gifts.map((gift, index) => (
                         <motion.div
                             key={index}
-                            className="rounded-full shadow-lg w-20 sm:w-24 flex justify-center items-center p-1 bg-white/10"
+                            className="rounded-full shadow-lg w-20 sm:w-24 md:w-36 flex justify-center items-center p-1 bg-white/10"
                             variants={item}
                         >
                             <motion.img
@@ -50,8 +50,8 @@ export const MainDressCode: FC<MainDressCodeProps> = ({ title, subTitle, gifts, 
                     ))}
                 </motion.div>
             </div>
-            <p className="w-[50%] font-poppins-light text-sm">{nota}</p>
-            <div className="w-36 h-10 flex justify-center items-center">
+            <p className="w-[50%] font-poppins-light text-sm md:text-xl">{nota}</p>
+            <div className="w-36 h-10 flex justify-center items-center md:w-44 md:h-12">
                 <Button text="Ver detalle" color="#193C69" onclick={handleShowModal} />
             </div>
         </div>

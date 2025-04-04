@@ -24,6 +24,6 @@ export const Button: FC<ButtonProps> = ({ id, text, color, icon, href, onclick, 
         }
     };
     return (
-        <button id={id} onClick={handleClick} style={{ backgroundColor: color }} className={`w-full h-full flex gap-2 items-center justify-center py-1 rounded-md text-white font-poppins text-[12px] px-4`}>{icon && (<><img src={Location} alt="Location" className="w-4"/></>)} {text}</button>
+        <button id={id} onClick={handleClick} style={{ backgroundColor: color }} className={`w-full h-full flex gap-2 items-center justify-center py-1 rounded-md text-white font-poppins text-[12px] md:text-lg px-4`}>{icon && (<><img src={Location} alt="Location" className="w-4 md:w-6"/></>)} {text}</button>
     )
 }
