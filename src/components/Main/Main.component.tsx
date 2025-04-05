@@ -11,6 +11,7 @@ import { Gift } from "../Gift/Gift.component";
 import useModal from "../../assets/hooks/modal.hook";
 import { useInvitadosStore } from "../../assets/store/invitados.store";
 import { motion } from "framer-motion";
+import FloatingMusicButton from "../FloatingMusicButton/FloatingMusicButton.component";
 
 export const Main: FC = () => {
     const { showModal } = useModal();
@@ -20,6 +21,7 @@ export const Main: FC = () => {
     }, [loadFromStorage]);
     return (
         <div className="flex flex-col justify-center items-center gap-10">
+            <FloatingMusicButton />
             <ContainerCountdown />
             <Guest
                 title="Están cordialmente invitados a nuestra boda"

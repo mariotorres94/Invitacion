@@ -5,14 +5,17 @@ import { Invitado } from "../models/invitado.model";
 interface InvitadosState {
     invitados: Invitado[];
     invitadoEncontrado: Invitado | null;
+    shouldPlayMusic: boolean;
     fetchInvitados: () => Promise<void>;
     setInvitadoEncontrado: (invitado: Invitado | null) => void;
+    setShouldPlayMusic: (play: boolean) => void;
     loadFromStorage: () => void;
 }
 
 export const useInvitadosStore = create<InvitadosState>((set) => ({
     invitados: [],
     invitadoEncontrado: null,
+    shouldPlayMusic: false,
 
     fetchInvitados: async () => {
         try {
@@ -30,6 +33,10 @@ export const useInvitadosStore = create<InvitadosState>((set) => ({
             localStorage.removeItem('invitadoEncontrado');
         }
         set({ invitadoEncontrado: invitado });
+    },
+
+    setShouldPlayMusic: (play) => {
+        set({ shouldPlayMusic: play });
     },
 
     loadFromStorage: () => {

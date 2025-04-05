@@ -17,7 +17,7 @@ type FormData = {
 export const CodeModal: FC = () => {
     const { hideModal } = useModal();
     const navigate = useNavigate();
-    const { invitados, setInvitadoEncontrado } = useInvitadosStore();
+    const { invitados, setInvitadoEncontrado, setShouldPlayMusic } = useInvitadosStore();
     const { control, handleSubmit, formState: { errors }, setError } = useForm<FormData>();
     const onSubmit = (data: FormData) => {
         const codigoIngresado = data.code.trim();
@@ -27,6 +27,7 @@ export const CodeModal: FC = () => {
         if (invitadoEncontrado) {
             hideModal(EModal.CODE);
             setInvitadoEncontrado(invitadoEncontrado);
+            setShouldPlayMusic(true);
             navigate('/invitacion');
         } else {
             setError('code', {
