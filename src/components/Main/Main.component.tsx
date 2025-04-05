@@ -10,13 +10,14 @@ import { DressCode } from "../DressCode/DressCode.component";
 import { Gift } from "../Gift/Gift.component";
 import useModal from "../../assets/hooks/modal.hook";
 import { useInvitadosStore } from "../../assets/store/invitados.store";
+import { motion } from "framer-motion";
 
-export const Main:FC = () => {
+export const Main: FC = () => {
     const { showModal } = useModal();
     const { invitadoEncontrado, loadFromStorage } = useInvitadosStore();
     useEffect(() => {
         loadFromStorage();
-    },[loadFromStorage]);
+    }, [loadFromStorage]);
     return (
         <div className="flex flex-col justify-center items-center gap-10">
             <ContainerCountdown />
@@ -36,15 +37,30 @@ export const Main:FC = () => {
                 imgElement={FlowerParent}
                 endElement={EndGuest}
             />
-            <div className="flex justify-center items-center w-full">
-                <img src={EndGuest} alt="End" className="w-[75%] sm:w-[45%] md:w-[30%]"/>
-            </div>
+            <motion.div
+                className="flex justify-center items-center w-full"
+                initial={{ opacity: 0, y: -100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{
+                    type: "spring",
+                    damping: 10,
+                    stiffness: 100,
+                    delay: 0.2
+                }}
+            >
+                <img
+                    src={EndGuest}
+                    alt="End"
+                    className="w-[75%] sm:w-[45%] md:w-[30%]"
+                />
+            </motion.div>
             <Programation
                 id="programacion-section"
                 title="Programación"
                 subtitle="“Cada minuto cuenta en esta celebración de amor. Por favor, sé puntual para no perderte ningún momento especial”"
-                imgElement={[FlowerR,FlowerL]}
-                imgElementFooter={[FlowerRFooter,FlowerLFooter]}
+                imgElement={[FlowerR, FlowerL]}
+                imgElementFooter={[FlowerRFooter, FlowerLFooter]}
                 endElement={EndGuest}
                 showModal={showModal}
             />
@@ -61,7 +77,6 @@ export const Main:FC = () => {
             />
             <Gift
                 title="Regalos"
-                // subTitle="Si deseas regalarnos algo más que tu hermosa presencia..."
                 showModal={showModal}
             />
         </div>

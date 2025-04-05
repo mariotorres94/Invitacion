@@ -10,33 +10,33 @@ export const ContainerCountdown: FC = () => {
     const dateMarried = useMemo(() => new Date("2025-07-26T12:00:00"), []);
     const renderer = ({ days, hours, minutes, seconds }: { days: number; hours: number; minutes: number; seconds: number }) => {
         return (
-            <div className="absolute top-8 right-1 sm:top-52 md:top-40 inset-x-0 flex justify-center text-center">
-                <div>
-                    <h3 className="text-5xl font-styleScript text-[#456EA1] md:text-7xl">Falta</h3>
+            <div className="absolute top-8 right-1 sm:top-52 md:top-40 lg:top-44 lg:-right-4 inset-x-0 flex justify-center text-center">
+                <div className="lg:flex lg:flex-col lg:gap-4 lg:justify-center lg:items-center">
+                    <h3 className="text-5xl font-styleScript text-[#456EA1] md:text-7xl lg:text-8xl">Falta</h3>
                     <div className="flex justify-center items-center mt-4">
                         <div className="flex flex-col border-r-2 border-[#AEDCEB] px-2">
-                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl text-[#002E5A] drop-shadow-xl">
+                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl lg:text-6xl text-[#002E5A] drop-shadow-xl">
                                 {formatTwoDigits(days)}
                             </div>
-                            <div className="font-poppins text-[#818B94]">DÍAS</div>
+                            <div className="font-poppins text-[#818B94] lg:text-2xl">DÍAS</div>
                         </div>
                         <div className="flex flex-col border-r-2 border-[#AEDCEB] px-2">
-                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl text-[#002E5A] drop-shadow-xl">
+                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl lg:text-6xl text-[#002E5A] drop-shadow-xl">
                                 {formatTwoDigits(hours)}
                             </div>
-                            <div className="font-poppins text-[#818B94]">HRS</div>
+                            <div className="font-poppins text-[#818B94] lg:text-2xl">HRS</div>
                         </div>
                         <div className="flex flex-col border-r-2 border-[#AEDCEB] px-2">
-                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl text-[#002E5A] drop-shadow-xl">
+                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl lg:text-6xl text-[#002E5A] drop-shadow-xl">
                                 {formatTwoDigits(minutes)}
                             </div>
-                            <div className="font-poppins text-[#818B94]">MIN</div>
+                            <div className="font-poppins text-[#818B94] lg:text-2xl">MIN</div>
                         </div>
                         <div className="flex flex-col px-2">
-                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl text-[#002E5A] drop-shadow-xl">
+                            <div className="font-strait font-bold text-xl sm:text-4xl md:text-5xl lg:text-6xl text-[#002E5A] drop-shadow-xl">
                                 {formatTwoDigits(seconds)}
                             </div>
-                            <div className="font-poppins text-[#818B94]">SEG</div>
+                            <div className="font-poppins text-[#818B94] lg:text-2xl">SEG</div>
                         </div>
                     </div>
                     <div className="flex justify-center items-center mt-4">
@@ -44,7 +44,7 @@ export const ContainerCountdown: FC = () => {
                             <motion.img
                                 src={HeartMain}
                                 alt="Heart"
-                                className="w-[35px]"
+                                className="w-[35px] lg:w-[50px]"
                                 animate={{
                                     scale: [1, 1.3, 1],
                                     opacity: [1, 0.8, 1],

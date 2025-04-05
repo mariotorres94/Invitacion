@@ -1,4 +1,4 @@
-export { default as BgHeader } from '../images/bg-header-1.webp';
+export { default as BgHeader } from '../images/bg-header-1.jpg';
 export { default as Heart } from '../images/heart.svg';
 export { default as BgHeaderMobile } from '../images/bg-header-mobile.svg';
 export { default as FlowerR } from '../images/flower-r.svg';

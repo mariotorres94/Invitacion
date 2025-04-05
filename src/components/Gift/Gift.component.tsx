@@ -19,9 +19,24 @@ export const Gift: FC<GiftProps> = ({ title, showModal }) => {
     };
     return (
         <div className="text-center sm:mt-3 md:flex md:flex-col md:gap-4">
-            <div className="w-[70%] sm:w-[50%] m-auto mb-6">
-                <img src={GiftSeparate} alt="" />
-            </div>
+            <motion.div
+                className="w-[70%] sm:w-[50%] m-auto mb-6"
+                initial={{ opacity: 0, x: -200 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false }}
+                transition={{
+                    type: "spring",
+                    damping: 10,
+                    stiffness: 100,
+                    delay: 0.2
+                }}
+            >
+                <img
+                    src={GiftSeparate}
+                    alt="Gift"
+                    className="w-full"
+                />
+            </motion.div>
             <div className="flex flex-col gap-4 items-center px-4 mx-5 md:mt-10">
                 <h2 className="font-styleScript text-3xl sm:text-4xl md:text-5xl text-[#456EA1]">{title}</h2>
             </div>

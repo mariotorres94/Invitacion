@@ -10,7 +10,7 @@ interface GuestProps {
 
 export const Guest: FC<GuestProps> = ({ title, nameFamily, subtitle }) => {
     return (
-        <div className="flex flex-col gap-4 items-center text-center mt-48 sm:mt-72 text-[#809FC3]">
+        <div className="flex flex-col gap-4 items-center text-center mt-48 sm:mt-72 lg:mt-80 text-[#809FC3]">
             <h2 className="w-[60%] text-lg sm:text-xl md:text-2xl font-josefin-slab-regular lg:text-3xl">{title}</h2>
             <div className="w-screen relative overflow-hidden -mx-4">
                 <img src={BgRecortePaper} alt="Paper" className="w-full h-auto object-cover" />

@@ -77,7 +77,7 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
         <div className="w-full flex flex-col gap-4 justify-center items-center">
             <div className="w-[60%] md:relative md:-top-14">
                 {timelineEvents.map((event, index) => (
-                    <div key={index} className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:items-start">
+                    <div key={index} className="w-full flex flex-col items-center sm:flex-row sm:justify-center sm:items-center">
                         <Place title={event.title} place={event.place} view={event.view}/>
                         <Icons icon1={event.icon1} icon2={event.icon2} isLast={index === timelineEvents.length - 1} />
                         <Address hour={event.hour} address={event.address} textButton={event.textButton} isLast={index === timelineEvents.length - 1} view={event.view} href={event.href} target={event.target} />
