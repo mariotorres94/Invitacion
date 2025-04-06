@@ -11,7 +11,6 @@ import { useInvitadosStore } from '../../../assets/store/invitados.store';
 export const ThankForConfirmingModal: FC = () => {
     const { hideModal } = useModal();
     const { dataForm } = useInvitadosStore();
-    console.log("dataForm ====>",dataForm)
     return (
         <Modal modalId={EModal.THANKFORCONFIRMING} className='w-[85%] md:w-[45%]'>
             <Card

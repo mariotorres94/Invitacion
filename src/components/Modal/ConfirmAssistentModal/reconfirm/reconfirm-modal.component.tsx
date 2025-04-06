@@ -60,13 +60,17 @@ export const ReConfirmAssistentModal: FC = () => {
                         )}
                     </ul>
                 </div>
-                <p>Ten en cuenta que solo se han asignado {cantidadInvitados} de los {pases.Pases} pases disponibles.</p>
+                {
+                    cantidadInvitados !== pases.Pases &&(
+                        <p>Ten en cuenta que solo se han asignado {cantidadInvitados} de los {pases.Pases} pases disponibles.</p>
+                    )
+                }
                 <p>Una vez que confirmes, no podrás modificar esta selección.</p>
                 <div className='flex justify-between items-center'>
-                    <div className="w-36 h-10 flex justify-center items-center md:w-44 md:h-12">
+                    <div className="w-28 h-10 flex justify-center items-center md:w-44 md:h-12">
                         <Button text="Cancelar" color="#ed4545" onclick={handleHideModal} />
                     </div>
-                    <div className="w-36 h-10 flex justify-center items-center md:w-44 md:h-12">
+                    <div className="w-28 h-10 flex justify-center items-center md:w-44 md:h-12">
                         <Button text="Enviar" color="#193C69" onclick={handleSendModal} />
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import useModal from '../../../../assets/hooks/modal.hook';
 import { EModal } from '../../../../assets/shared/enums/modal.enum';
-import { FlowerModal } from '../../../../assets/images';
+import { FlowerModal, QR } from '../../../../assets/images';
 import { CloseModal, GifModal } from '../../../../assets/icons';
 import { Modal } from '../../Modal.component';
 import { Card } from '../../../Card/Card.component';
@@ -34,10 +34,15 @@ export const OurDreamstModal: FC = () => {
                         </ul>
                     </div>
                     <p className='font-poppins-regular'>Tu apoyo, con la bendición de Dios, nos acercará a cada uno de estos sueños.</p>
-                    <div className='flex flex-col justify-start items-start px-10'>
-                        <span className='font-poppins-regular'>INTERBANCK</span>
+                    <div className='flex flex-col justify-center items-center px-6'>
+                        <span className='font-poppins-regular'>INTERBANK</span>
                         <span className='font-poppins-regular'>Nro. de cuenta: 898 3465026776</span>
                         <span className='font-poppins-regular'>CCI: 00389801346502677645</span>
+                    </div>
+                    <div className='flex flex-col justify-center items-center text-center'>
+                        <h3>Yuri Carbajal Ortega</h3>
+                        <img src={QR} alt="QR" width={200}/>
+                        <span>Plin</span>
                     </div>
                 </div>
                 <p className='font-poppins text-center'>¡Gracias por ser parte de este día tan especial para nosotros!</p>

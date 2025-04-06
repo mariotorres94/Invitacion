@@ -70,7 +70,8 @@ interface TimeLineProps {
 
 export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
     const { confirmado, invitadoEncontrado } = useInvitadosStore();
-    const disabled = confirmado === 'Confirmado' || confirmado === 'No asistirá';
+    const stateConfirm = confirmado === '' ? invitadoEncontrado?.Confirmacion : confirmado;
+    const disabled = stateConfirm === 'Confirmado' || stateConfirm === 'No asistirá';
     const disabledByPasses = !(invitadoEncontrado && invitadoEncontrado?.Pases > 0);
     const text = disabled ? '¡Gracias por confirmar tu asistencia!' : '¡Confirmar mi asistencia!';
     const handleShowModal = () => {
@@ -91,7 +92,7 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
             </div>
             <div className="flex flex-col justify-center items-center px-20">
                 <div className="h-10 flex justify-center items-center md:h-14 md:w-72 ">
-                    <Button id="confirm-button" text={text} color="#193C69" onclick={handleShowModal} disabled={disabled || disabledByPasses}/>
+                    <Button id="confirm-button" text={text} color={disabled ? '#9CA3AF' : '#193C69'} onclick={handleShowModal} disabled={disabled || disabledByPasses}/>
                 </div>
                 <div className="w-52 sm:w-[43%] mt-4">
                     <span className="text-[#193C69] md:text-xl">IMPORTANTE</span>

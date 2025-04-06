@@ -47,3 +47,4 @@ export { default as Tapa1Desktop } from '../images/tapa-1-desktop.svg';
 export { default as Tapa2Desktop } from '../images/tapa-2-desktop.svg';
 export { default as Background } from '../images/background-all.svg';
 export { default as Sello } from '../images/Sello.svg';
+export { default as QR } from '../images/QR.jpg';

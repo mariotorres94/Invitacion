@@ -23,9 +23,8 @@ export const GiftListModal: FC = () => {
                     <h2 className='font-poppins'>Si deseas regalarnos algo especial, esta es nuestra lista de regalos:</h2>
                     <p className='font-poppins-light'>Para acceder, solo sigue estos pasos:</p>
                     <ul className='list-decimal pl-5 font-poppins-regular leading-6'>
-                        <li>Ingresa <a href="https://www.noviosfalabella.com.pe/public/resultadoBusquedaNovios.do" target="_blank" rel="noopener noreferrer" className="text-red-400 font-bold underline underline-offset-2 hover:underline-offset-4 transition-all">AQUI!</a></li>
-                        <li>Ingresa el código <span className='font-bold'>716220-00</span> y luego BUSCAR</li>
-                        <li>Dirígete a REGALAR</li>
+                        <li>Ingresa <a href="https://www.noviosfalabella.com.pe/public/resultadoBusquedaNovios.do?categoria=todas&idsJerarquias=&nombreCategoria=&nivelCategoria=&codigoEvento=&dvEvento=&radTipoBusqueda=1&txtBusqueda=716220-00" target="_blank" rel="noopener noreferrer" className="text-red-400 font-bold underline underline-offset-2 hover:underline-offset-4 transition-all">AQUI!</a></li>
+                        <li>Selecciona nuestro nombre</li>
                         <li>Elige el regalo que te gustaría darnos y sigue el proceso de compra guiado.</li>
                     </ul>
                 </div>

@@ -1,16 +1,16 @@
 import { create } from "zustand";
 import { DataService } from "../service/data.service";
-import { Invitado } from "../models/invitado.model";
+import { DataInvitado, Invitado } from "../models/invitado.model";
 import { ConfirmacionData } from "../interface/form.interface";
 
 interface InvitadosState {
     invitados: Invitado[];
-    invitadoEncontrado: Invitado | null;
+    invitadoEncontrado: DataInvitado | null;
     shouldPlayMusic: boolean;
     dataForm: ConfirmacionData | null;
     confirmado: string;
     fetchInvitados: () => Promise<void>;
-    setInvitadoEncontrado: (invitado: Invitado | null) => void;
+    setInvitadoEncontrado: (invitado: DataInvitado | null) => void;
     setShouldPlayMusic: (play: boolean) => void;
     loadFromStorage: () => void;
     setDataForm: (formData: ConfirmacionData) => void;

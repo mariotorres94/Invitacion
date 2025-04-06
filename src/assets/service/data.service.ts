@@ -1,7 +1,7 @@
 import { ConfirmacionData, UpdateData } from '../interface/form.interface';
 import { ApiResponse, Invitado } from '../models/invitado.model';
 
-export const API_URL = 'https://script.google.com/macros/s/AKfycbzaKxjWKIozw2U0TSK7O73pKIFeeJVF7kGwkooRB-xvncwmah9tlHwEjRl-xmuYPd0/exec';
+export const API_URL = 'https://script.google.com/macros/s/AKfycbyNC89gfWS_RpneIvAT-vIqfEeyDsMsqGRFYSFanRgOeXIQO5mLdXkUm-VZNob2e20/exec';
 
 export const DataService = {
     async getInvitados(): Promise<Invitado[]> {

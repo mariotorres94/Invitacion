@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../Button/Button.component';
 import { CloseModal } from '../../../assets/icons';
 import { useInvitadosStore } from '../../../assets/store/invitados.store';
+import { DataInvitado } from '../../../assets/models/invitado.model';
 
 type FormData = {
     code: string;
@@ -25,8 +26,14 @@ export const CodeModal: FC = () => {
             invitado.ID.toString() === codigoIngresado
         );
         if (invitadoEncontrado) {
+            const dataInvitadoStore: DataInvitado = {
+                ID: invitadoEncontrado.ID,
+                Familia: invitadoEncontrado.Familia,
+                Pases: invitadoEncontrado.Pases,
+                Confirmacion: invitadoEncontrado.Confirmacion,
+            };
             hideModal(EModal.CODE);
-            setInvitadoEncontrado(invitadoEncontrado);
+            setInvitadoEncontrado(dataInvitadoStore);
             setShouldPlayMusic(true);
             navigate('/invitacion');
         } else {

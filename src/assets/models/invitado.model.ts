@@ -14,3 +14,10 @@ export interface ApiResponse {
     data: Invitado[];
     status: string;
 }
+
+export interface DataInvitado {
+    ID: number;
+    Familia: string;
+    Pases: number;
+    Confirmacion: string;
+}

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
+import { useScreenSize } from "../../../../assets/hooks/useScreenSize.hook";
 
 interface IconsProps {
     icon1: string;
@@ -9,6 +10,7 @@ interface IconsProps {
 }
 
 export const Icons: FC<IconsProps> = ({ icon1, icon2, isLast, view }) => {
+    const screenSize = useScreenSize();
     return (
         <div className="w-[20%] flex flex-col gap-4 justify-center items-center">
             <div className="mx-auto">
@@ -34,8 +36,8 @@ export const Icons: FC<IconsProps> = ({ icon1, icon2, isLast, view }) => {
                     )
                 }
             </div>
-            {!isLast && view && (
-                <div className="w-0.5 h-[70px] sm:h-[150px] bg-[#809FC3] mx-auto drop-shadow-md"></div>
+            {!isLast && (
+                <div className={`w-0.5 h-[70px] sm:h-[150px] bg-[#809FC3] mx-auto drop-shadow-md ${view === undefined && screenSize === 'mobile' && 'hidden'}`}></div>
             )}
         </div>
     )

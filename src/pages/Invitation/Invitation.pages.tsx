@@ -10,7 +10,6 @@ import { useLoading } from "../../assets/hooks/useLoading.hook";
 export const Invitation:FC = () => {
     const screenSize = useScreenSize();
     const { isLoading } = useLoading();
-    console.log("isLoading",isLoading)
     return (
         <div className="w-full overflow-hidden">
             {isLoading && <Loading />}

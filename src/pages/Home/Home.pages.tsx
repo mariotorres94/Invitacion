@@ -49,11 +49,11 @@ export const Home: FC = () => {
             <div className={`absolute top-0 -left-6 z-50 md:-left-12 md:-top-3 h-[110vh] transition-transform duration-1000 ease-in ${isOpen ? 'transform -translate-x-1/2' : ''}`}>
                 <img src={screenSize === 'mobile' ? Tapa1 : Tapa1Desktop} alt="" className="h-full w-auto" />
             </div>
-            <div className="absolute top-68 z-50 md:top-60 cursor-pointer">
+            <div className="absolute inset-x-0 top-64 z-50 md:top-36 cursor-pointer flex justify-center">
                 <motion.img
                     src={Sello}
-                    alt=""
-                    width={screenSize === 'mobile' ? 160 : 250}
+                    alt="Sello"
+                    width={screenSize === 'mobile' ? 190 : 240}
                     onClick={handleShowModal}
                     initial={{ scale: 1 }}
                     animate={{

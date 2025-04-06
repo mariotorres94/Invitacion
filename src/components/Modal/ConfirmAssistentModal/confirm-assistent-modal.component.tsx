@@ -111,7 +111,7 @@ export const ConfirmAssistentModal: FC = () => {
                         {
                             attendance === 'si' && invitadoEncontrado &&  invitadoEncontrado?.Pases > 0 && (
                                 <>
-                                    <p className='font-josefin-sans-light'>Tienes {invitadoEncontrado?.Pases} pase</p>
+                                    <p className='font-josefin-sans-light'>Tienes {invitadoEncontrado?.Pases} {invitadoEncontrado?.Pases === 1 ? 'pase' : 'pases'}</p>
                                     <div className="mt-4">
                                         <Controller
                                             name="fullName"
