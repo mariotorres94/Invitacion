@@ -5,6 +5,10 @@ import { GiftModal } from "../../../components/Modal/GiftModal/gift-modal.compon
 import { DressCodeModal } from "../../../components/Modal/DressCodeModal/dress-code-modal.component";
 import { ConfirmAssistentModal } from "../../../components/Modal/ConfirmAssistentModal/confirm-assistent-modal.component";
 import { CodeModal } from "../../../components/Modal/CodeModal/code-modal.component";
+import { OurDreamstModal } from "../../../components/Modal/GiftModal/OurDreamsModal/our-dreams-modal.component";
+import { GiftListModal } from "../../../components/Modal/GiftModal/GiftListModal/GiftListModal.component";
+import { ReConfirmAssistentModal } from "../../../components/Modal/ConfirmAssistentModal/reconfirm/reconfirm-modal.component";
+import { ThankForConfirmingModal } from "../../../components/Modal/ThankForConfirming/thank-for-confirming-modal.component";
 
 export const ModalRenderer: FC = () => {
     const { modals } = useModal();
@@ -15,6 +19,10 @@ export const ModalRenderer: FC = () => {
             {modals[EModal.DRESSCODE] && <DressCodeModal />}
             {modals[EModal.CONFIRMASSISTENT] && <ConfirmAssistentModal />}
             {modals[EModal.CODE] && <CodeModal />}
+            {modals[EModal.OURDREAMS] && <OurDreamstModal />}
+            {modals[EModal.GIFTLIST] && <GiftListModal />}
+            {modals[EModal.RECONFIRMASSISTENT] && <ReConfirmAssistentModal />}
+            {modals[EModal.THANKFORCONFIRMING] && <ThankForConfirmingModal />}
         </>
     )
 }

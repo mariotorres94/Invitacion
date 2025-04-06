@@ -21,7 +21,7 @@ export const Address: FC<AddressProps> = ({ hour, address, textButton, isLast, v
                         <span className="font-bold">Dirección</span>
                     )
                 }
-                <p>{address}</p>
+                <p className="w-[130%]">{address}</p>
                 {
                     view && (
                         <div className="w-36 h-10 flex justify-center items-center md:mt-4 md:w-52 md:h-14">

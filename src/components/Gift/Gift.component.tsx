@@ -14,7 +14,9 @@ interface GiftProps {
 export const Gift: FC<GiftProps> = ({ title, showModal }) => {
     const handleShowModal = () => {
         if (showModal) {
-            showModal(EModal.GIFT);
+            if(EModal.GIFT) {
+                showModal(EModal.GIFT);
+            }
         }
     };
     return (

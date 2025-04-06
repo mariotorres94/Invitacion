@@ -16,7 +16,7 @@ export const Place: FC<PlaceProps> = ({ title, place, view }) => {
                         <span className="font-bold">Lugar</span>
                     )
                 }
-                <p>{place}</p>
+                <p className={`w-full mb-4 ${place ? '' : 'hidden'}`}>{place}</p>
             </div>
         </div>
     )

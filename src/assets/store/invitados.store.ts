@@ -1,21 +1,28 @@
 import { create } from "zustand";
 import { DataService } from "../service/data.service";
 import { Invitado } from "../models/invitado.model";
+import { ConfirmacionData } from "../interface/form.interface";
 
 interface InvitadosState {
     invitados: Invitado[];
     invitadoEncontrado: Invitado | null;
     shouldPlayMusic: boolean;
+    dataForm: ConfirmacionData | null;
+    confirmado: string;
     fetchInvitados: () => Promise<void>;
     setInvitadoEncontrado: (invitado: Invitado | null) => void;
     setShouldPlayMusic: (play: boolean) => void;
     loadFromStorage: () => void;
+    setDataForm: (formData: ConfirmacionData) => void;
+    setConfirmado: (confirmado: string) => void;
 }
 
 export const useInvitadosStore = create<InvitadosState>((set) => ({
     invitados: [],
     invitadoEncontrado: null,
     shouldPlayMusic: false,
+    dataForm: null,
+    confirmado: '',
 
     fetchInvitados: async () => {
         try {
@@ -48,5 +55,13 @@ export const useInvitadosStore = create<InvitadosState>((set) => ({
                 localStorage.removeItem('invitadoEncontrado');
             }
         }
-    }
+    },
+
+    setDataForm: (formData) => {
+        set({ dataForm: formData });
+    },
+
+    setConfirmado: (confirmado) => {
+        set({ confirmado });
+    },
 }));

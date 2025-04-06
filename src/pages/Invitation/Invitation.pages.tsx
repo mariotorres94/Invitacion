@@ -4,11 +4,16 @@ import { useScreenSize } from "../../assets/hooks/useScreenSize.hook";
 import { BgHeader } from "../../assets/images";
 import { Main } from "../../components/Main/Main.component";
 import { Footer } from '../../components/Footer/Footer.component';
+import { Loading } from "../../components/Loading/Loading.component";
+import { useLoading } from "../../assets/hooks/useLoading.hook";
 
 export const Invitation:FC = () => {
     const screenSize = useScreenSize();
+    const { isLoading } = useLoading();
+    console.log("isLoading",isLoading)
     return (
         <div className="w-full overflow-hidden">
+            {isLoading && <Loading />}
             <Header
                 bgImage={BgHeader}
                 title="Yuri & Mario"

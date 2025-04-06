@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { FOTO104, FOTO173, FOTO237, FOTO241, FOTO246, FOTO310, FOTO329, FOTO359, FOTO365, FOTO80, FOTO88, HeartTimeLine } from "../../assets/images";
+import { FOTO104, FOTO173, FOTO237, FOTO241, FOTO246, FOTO310, FOTO329, FOTO359, FOTO365, FOTO80, FOTO88, Heart } from "../../assets/images";
 
 interface PortraitProps {
     title: string;
@@ -68,7 +68,7 @@ export const Portrait: FC<PortraitProps> = ({ title, subTitle }) => {
                                         isActive ? "opacity-100" : "opacity-0"
                                     }`}
                                 >
-                                    <img src={HeartTimeLine} alt="" className="w-8 h-8 md:w-12 md:h-12"/>
+                                    <img src={Heart} alt="" className="w-10 h-10 md:w-12 md:h-12"/>
                                 </div>
                                 <div className="relative w-full h-full bg-[#D9D9D9] border-4 border-white flex items-center justify-center rounded-lg shadow-lg overflow-hidden">
                                     <img
@@ -82,7 +82,7 @@ export const Portrait: FC<PortraitProps> = ({ title, subTitle }) => {
                                         isActive ? "opacity-100" : "opacity-0"
                                     }`}
                                 >
-                                    <img src={HeartTimeLine} alt="" className="w-8 h-8 md:w-12 md:h-12"/>
+                                    <img src={Heart} alt="" className="w-10 h-10 md:w-12 md:h-12"/>
                                 </div>
                             </div>
                         );

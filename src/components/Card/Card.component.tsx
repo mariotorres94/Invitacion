@@ -25,6 +25,15 @@ export const Card: FC<CardProps> = ({ position, image, width, className, childre
             if(EModal.CONFIRMASSISTENT) {
                 hideModal(EModal.CONFIRMASSISTENT);
             }
+            if(EModal.OURDREAMS) {
+                hideModal(EModal.OURDREAMS);
+            }
+            if(EModal.GIFTLIST) {
+                hideModal(EModal.GIFTLIST);
+            }
+            if(EModal.THANKFORCONFIRMING) {
+                hideModal(EModal.THANKFORCONFIRMING);
+            }
         }
     }
     return (
@@ -35,10 +44,10 @@ export const Card: FC<CardProps> = ({ position, image, width, className, childre
                         view && (
                             <>
                                 <div className='absolute -right-8 -top-4 cursor-pointer'>
-                                    <img src={icon2} alt="Close" className='w-10' onClick={handleHideModal}/>
+                                    <img src={icon2} alt="Close" className={`w-10 ${icon2 !== '' ? '' : 'hidden'}`} onClick={handleHideModal}/>
                                 </div>
                                 <div className="absolute -top-2 z-50">
-                                    <img src={icon} alt="Icon" className="bg-white rounded-full p-4 w-24 h-24 md:w-32 shadow-md" />
+                                    <img src={icon} alt="Icon" className={`bg-white rounded-full p-4 w-24 h-24 md:w-32 shadow-md ${icon !== '' ? '' : 'hidden'}`} />
                                 </div>
                             </>
                         )

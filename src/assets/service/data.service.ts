@@ -1,23 +1,17 @@
+import { ConfirmacionData, UpdateData } from '../interface/form.interface';
 import { ApiResponse, Invitado } from '../models/invitado.model';
 
-export interface ConfirmacionData {
-    attendance: string;
-    fullName: string;
-    phoneNumber: string;
-    guest?: {
-        nombre: string;
-    }[];
-    familyCode: string | number | undefined;
-}
-
-// export const API_URL = 'https://script.google.com/macros/s/AKfycbyEjOAEitVrj91hv3wbvwRsZAch_57TSCsMCjX6zVXNtEBqyFXf2Ozg1Br_yaY_oLc/exec';
-// export const API_URL = 'https://script.google.com/macros/s/AKfycbwPO20gtf6E9CNozkankXPfQp4pyADaFPbcLVYA0SVg-nx39AcVWxHFf5hCkzADrkc/exec';
-export const API_URL = 'https://script.google.com/macros/s/AKfycbwi7Mnh8XGglHWtQ2hx_SbkZ3owyHwuuL0jgVCCWLP8-0KoufGOtUvvXB8Fc-4UKGU/exec';
+export const API_URL = 'https://script.google.com/macros/s/AKfycbzaKxjWKIozw2U0TSK7O73pKIFeeJVF7kGwkooRB-xvncwmah9tlHwEjRl-xmuYPd0/exec';
 
 export const DataService = {
     async getInvitados(): Promise<Invitado[]> {
         try {
-            const response = await fetch(API_URL);
+            const url = `${API_URL}?t=${new Date().getTime()}`;
+            const response = await fetch(url, {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-cache'
+            });
 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => null);
@@ -35,28 +29,38 @@ export const DataService = {
         }
     },
 
-    async sendConfirmaciones(submissionData: ConfirmacionData): Promise<{ success: boolean; message?: string }> {
+    async sendConfirmaciones(submissionData: ConfirmacionData): Promise<{ success: boolean; message?: string; updateData: UpdateData }> {
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
-                // mode: 'no-cors',
+                cache: "no-cache",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
                 },
+                redirect: "follow",
                 body: JSON.stringify(submissionData),
             });
 
             if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`HTTP ${response.status}: ${errorText}`);
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.message || `HTTP ${response.status}`);
             }
 
-            return await response.json();
+            const data = await response.json();
+            return {
+                success: true,
+                updateData: {
+                    confirmacion: data.updatedData.confirmacion || "",
+                }
+            };
         } catch (error) {
             console.error('Error sending confirmaciones:', error);
             return {
                 success: false,
                 message: error instanceof Error ? error.message : 'Unknown error',
+                updateData: {
+                    confirmacion: "",
+                },
             };
         }
     }

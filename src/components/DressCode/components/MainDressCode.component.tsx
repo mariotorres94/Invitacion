@@ -14,7 +14,9 @@ interface MainDressCodeProps {
 export const MainDressCode: FC<MainDressCodeProps> = ({ title, subTitle, gifts, nota, showModal }) => {
     const handleShowModal = () => {
         if (showModal) {
-            showModal(EModal.DRESSCODE);
+            if(EModal.DRESSCODE){
+                showModal(EModal.DRESSCODE);
+            }
         }
     };
     return (
