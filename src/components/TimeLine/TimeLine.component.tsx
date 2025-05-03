@@ -83,10 +83,10 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
     };
     useEffect(() => {
         const dateConfirmated = new Date('2025-04-30T23:59:59Z');
-        if(isAfter(new Date(), dateConfirmated)){
+        if(isAfter(new Date(), dateConfirmated) && stateConfirm === '') {
             setViewButton(true);
         }
-    },[])
+    },[stateConfirm])
     return (
         <div className="w-full flex flex-col gap-4 justify-center items-center">
             <div className="w-[60%] md:relative md:-top-14">
