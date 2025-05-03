@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Place } from "./Components/Place/Place.component";
 import { Icons } from "./Components/Icons/Icons.component";
 import { Address } from "./Components/Address/Address.component";
@@ -7,6 +7,7 @@ import { Button } from "../Button/Button.component";
 import { Heart } from "../../assets/gifts";
 import { EModal } from "../../assets/shared/enums/modal.enum";
 import { useInvitadosStore } from "../../assets/store/invitados.store";
+import { isAfter } from "date-fns";
 
 const timelineEvents: Array<{
     title: string;
@@ -74,11 +75,18 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
     const disabled = stateConfirm === 'Confirmado' || stateConfirm === 'No asistirá';
     const disabledByPasses = !(invitadoEncontrado && invitadoEncontrado?.Pases > 0);
     const text = disabled ? '¡Gracias por confirmar tu asistencia!' : '¡Confirmar mi asistencia!';
+    const [viewButton, setViewButton] = useState<boolean>(false);
     const handleShowModal = () => {
         if (showModal) {
             showModal(EModal.CONFIRMASSISTENT);
         }
     };
+    useEffect(() => {
+        const dateConfirmated = new Date('2025-04-30T23:59:59Z');
+        if(isAfter(new Date(), dateConfirmated)){
+            setViewButton(true);
+        }
+    },[])
     return (
         <div className="w-full flex flex-col gap-4 justify-center items-center">
             <div className="w-[60%] md:relative md:-top-14">
@@ -91,9 +99,13 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
                 ))}
             </div>
             <div className="flex flex-col justify-center items-center px-20">
-                <div className="h-10 flex justify-center items-center md:h-14 md:w-72 ">
-                    <Button id="confirm-button" text={text} color={disabled ? '#9CA3AF' : '#193C69'} onclick={handleShowModal} disabled={disabled || disabledByPasses}/>
-                </div>
+                {
+                    !viewButton && (
+                        <div className="h-10 flex justify-center items-center md:h-14 md:w-72 ">
+                            <Button id="confirm-button" text={text} color={disabled ? '#9CA3AF' : '#193C69'} onclick={handleShowModal} disabled={disabled || disabledByPasses}/>
+                        </div>
+                    )
+                }
                 <div className="w-52 sm:w-[43%] mt-4">
                     <span className="text-[#193C69] md:text-xl">IMPORTANTE</span>
                     <p className="font-josefin-sans-light md:text-xl">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-bold">30 de abril</span></p>

@@ -5,12 +5,13 @@ import { ContentCountdown } from "../ContentCountdown/ContentCountdown.component
 import { formatTwoDigits } from "../../assets/utils/countdown.utils";
 import { HeartMain } from "../../assets/icons";
 import { motion } from "framer-motion";
+import { isSameDay } from "date-fns";
 
 export const ContainerCountdown: FC = () => {
-    const dateMarried = useMemo(() => new Date("2025-07-26T12:00:00"), []);
+    const dateMarried = useMemo(() => new Date("2025-07-26T00:00:00"), []);
     const renderer = ({ days, hours, minutes, seconds }: { days: number; hours: number; minutes: number; seconds: number }) => {
         return (
-            <div className="absolute top-8 right-1 sm:top-52 md:top-40 lg:top-44 lg:-right-4 inset-x-0 flex justify-center text-center">
+            <div className="absolute top-8 right-1 sm:top-52 md:top-40 lg:top-32 lg:-right-4 inset-x-0 flex justify-center text-center">
                 <div className="lg:flex lg:flex-col lg:gap-4 lg:justify-center lg:items-center">
                     <h3 className="text-5xl font-styleScript text-[#456EA1] md:text-7xl lg:text-8xl">Falta</h3>
                     <div className="flex justify-center items-center mt-4">
@@ -61,6 +62,31 @@ export const ContainerCountdown: FC = () => {
             </div>
         );
     };
+    const rendererTheDayHasArrived = () => {
+        return (
+            <div className="absolute top-12 right-1 sm:top-52 md:top-40 lg:top-52 lg:-right-4 inset-x-0 flex justify-center text-center">
+                <div className="lg:w-96 lg:flex lg:flex-col lg:gap-4 lg:justify-center lg:items-center">
+                    <h3 className="text-5xl font-styleScript text-[#456EA1] md:text-7xl">¡El gran día ha llegado!</h3>
+                    <div className="flex justify-center items-center mt-4">
+                        <motion.img
+                            src={HeartMain}
+                            alt="Heart"
+                            className="w-[35px] lg:w-[50px]"
+                            animate={{
+                                scale: [1, 1.3, 1],
+                                opacity: [1, 0.8, 1],
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    }
     return (
         <ContentCountdown
             image={ContentCountdownFlower}
@@ -69,7 +95,7 @@ export const ContainerCountdown: FC = () => {
             className="w-[70%] md:w-[40%]"
             contentImage={ContentCountdownDesktop}
         >
-            <Countdown date={dateMarried} renderer={renderer} />
+            <Countdown date={dateMarried} renderer={isSameDay(new Date(), dateMarried) ? rendererTheDayHasArrived : renderer} />
         </ContentCountdown>
     )
 }
