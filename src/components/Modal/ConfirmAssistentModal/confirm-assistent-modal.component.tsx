@@ -188,7 +188,7 @@ export const ConfirmAssistentModal: FC = () => {
                     </form>
                     <div className="text-sm w-44 mx-auto sm:w-[43%] mt-4">
                         <span className="text-[#193C69] font-josefin-sans-regular">IMPORTANTE</span>
-                        <p className="font-josefin-sans-light">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-josefin-sans-regular">30 de abril</span></p>
+                        <p className="font-josefin-sans-light">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-josefin-sans-regular">15 de junio</span></p>
                     </div>
                 </div>
             </Card>

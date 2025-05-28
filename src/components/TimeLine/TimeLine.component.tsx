@@ -82,7 +82,7 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
         }
     };
     useEffect(() => {
-        const dateConfirmated = new Date('2025-04-30T23:59:59Z');
+        const dateConfirmated = new Date('2025-06-15T23:59:59Z');
         if(isAfter(new Date(), dateConfirmated) && stateConfirm === '') {
             setViewButton(true);
         }
@@ -100,16 +100,20 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
             </div>
             <div className="flex flex-col justify-center items-center px-20">
                 {
-                    !viewButton && (
+                    !viewButton && (invitadoEncontrado?.Pases !== 0 || invitadoEncontrado.Pases.toString() !== '') && (
                         <div className="h-10 flex justify-center items-center md:h-14 md:w-72 ">
                             <Button id="confirm-button" text={text} color={disabled ? '#9CA3AF' : '#193C69'} onclick={handleShowModal} disabled={disabled || disabledByPasses}/>
                         </div>
                     )
                 }
-                <div className="w-52 sm:w-[43%] mt-4">
-                    <span className="text-[#193C69] md:text-xl">IMPORTANTE</span>
-                    <p className="font-josefin-sans-light md:text-xl">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-bold">30 de abril</span></p>
-                </div>
+                {
+                    (invitadoEncontrado?.Pases !== 0 || invitadoEncontrado?.Pases.toString() !== '') && (
+                        <div className="w-52 sm:w-[43%] mt-4">
+                            <span className="text-[#193C69] md:text-xl">IMPORTANTE</span>
+                            <p className="font-josefin-sans-light md:text-xl">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-bold">15 de junio</span></p>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );
