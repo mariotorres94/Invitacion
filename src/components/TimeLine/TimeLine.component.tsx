@@ -82,7 +82,7 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
         }
     };
     useEffect(() => {
-        const dateConfirmated = new Date('2025-06-15T23:59:59Z');
+        const dateConfirmated = new Date('2025-07-15T23:59:59Z');
         if(isAfter(new Date(), dateConfirmated) && stateConfirm === '') {
             setViewButton(true);
         }
@@ -110,7 +110,7 @@ export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
                     (invitadoEncontrado?.Pases !== 0 || invitadoEncontrado?.Pases.toString() !== '') && (
                         <div className="w-52 sm:w-[43%] mt-4">
                             <span className="text-[#193C69] md:text-xl">IMPORTANTE</span>
-                            <p className="font-josefin-sans-light md:text-xl">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-bold">15 de junio</span></p>
+                            <p className="font-josefin-sans-light md:text-xl">Puedes registrar y confirmar tu asistencia hasta antes del <span className="text-[#193C69] font-bold">15 de julio</span></p>
                         </div>
                     )
                 }
