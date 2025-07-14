@@ -69,7 +69,7 @@ interface TimeLineProps {
     showModal?: (modal: string, data?: unknown) => void;
 }
 
-export const TimeLine: FC<TimeLineProps> = ({ showModal }) => {
+export const TimeLine: FC<TimeLineProps> = ({ showModal }) => { 
     const { confirmado, invitadoEncontrado } = useInvitadosStore();
     const stateConfirm = confirmado === '' ? invitadoEncontrado?.Confirmacion : confirmado;
     const disabled = stateConfirm === 'Confirmado' || stateConfirm === 'No asistirá';
